@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on Caozuohua&#39;s Blog</title>
+    <link>https://caozuohua.github.io/tags/cloud/</link>
+    <description>Recent content in Cloud on Caozuohua&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 05 May 2026 08:01:13 +0800</lastBuildDate>
+    <atom:link href="https://caozuohua.github.io/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零到一：基于 Gemini 和 Claude 的智能体开发实战——集成 Vertex AI、Lark、SQLite，赋能动态工具与持久记忆</title>
+      <link>https://caozuohua.github.io/posts/2026-05-05-%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%9F%BA%E4%BA%8E-gemini-%E5%92%8C-claude-%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E9%9B%86%E6%88%90-vertex-ailar/</link>
+      <pubDate>Tue, 05 May 2026 08:01:13 +0800</pubDate>
+      <guid>https://caozuohua.github.io/posts/2026-05-05-%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%9F%BA%E4%BA%8E-gemini-%E5%92%8C-claude-%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98%E9%9B%86%E6%88%90-vertex-ailar/</guid>
+      <description>&lt;h2 id=&#34;引言&#34;&gt;引言&lt;/h2&gt;&#xA;&lt;p&gt;在个人开发者资源有限的情况下，如何构建一个功能强大且具备学习能力的智能体？本项目将带您深入探索，如何利用免费资源（VPS、AI模型、Lark机器人等），从零开始，一步步打造一个集成了 Vertex AI、Lark、SQLite，并支持动态工具库、持久记忆和偏好学习的智能体。整个开发过程，我们将全程依赖 Gemini 和 Claude 这两位强大的 AI 助手，通过不断的对话、调试和代码生成，最终成功实现这一目标。&lt;/p&gt;&#xA;&lt;h2 id=&#34;背景与挑战&#34;&gt;背景与挑战&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-资源限制与成本考量&#34;&gt;1. 资源限制与成本考量&lt;/h3&gt;&#xA;&lt;p&gt;对于个人开发者而言，有限的 VPS 资源和对 AI 服务成本的考量是首要问题。本项目旨在使用尽可能免费或低成本的方案，证明个人开发者也能构建出色的 AI 应用。&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-gcp-模型列表更新与教程失效&#34;&gt;2. GCP 模型列表更新与教程失效&lt;/h3&gt;&#xA;&lt;p&gt;在开发过程中，我们遇到了 Google Cloud Platform (GCP) 的 Vertex AI 模型列表更新的问题。许多基于旧模型列表的网络教程和示例代码因此失效，增加了我们查找和适配最新可用模型的难度。&lt;/p&gt;&#xA;&lt;h3 id=&#34;3-lark-机器人事件回调配置难题&#34;&gt;3. Lark 机器人事件回调配置难题&lt;/h3&gt;&#xA;&lt;p&gt;国际版 Lark 机器人的事件回调配置，尤其是在添加各种自定义事件时，缺乏清晰的指导步骤，给开发者带来了不小的挑战。我们需要自行探索和摸索其接口和配置方式。&lt;/p&gt;&#xA;&lt;h2 id=&#34;开发过程与解决方案&#34;&gt;开发过程与解决方案&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-ai-助手的协同开发&#34;&gt;1. AI 助手的协同开发&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Gemini 与 Claude 的角色分工：&lt;/strong&gt; Gemini 在项目初期提供了整体的架构设计思路和技术选型建议。而 Claude 则在具体的代码实现、问题排查和模型接口探索中扮演了关键角色。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Claude 的代码生成与调试：&lt;/strong&gt; 面对 GCP 模型列表的变更和 Lark 机器人的配置难题，Claude 不断地编写测试代码，帮助我们摸清模型清单、回调接口的细节。从 API 调用、参数配置，到实现偏好系统、记忆系统、动态工具库，Claude 提供了大量的代码支持和调试建议。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2-技术栈选择与实现&#34;&gt;2. 技术栈选择与实现&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;VPS:&lt;/strong&gt; 利用免费或低成本的 VPS 作为运行环境。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Vertex AI:&lt;/strong&gt; 通过 Vertex AI 访问 Google 的强大 AI 模型。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Lark:&lt;/strong&gt; 集成 Lark 机器人，作为智能体的交互界面和事件处理中枢。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;SQLite:&lt;/strong&gt; 使用 SQLite 作为本地数据库，实现智能体的持久记忆功能。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Python:&lt;/strong&gt; 作为主要的开发语言。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;3-解决关键问题&#34;&gt;3. 解决关键问题&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;GCP 模型更新适配：&lt;/strong&gt; 通过 Claude 生成的测试代码，我们成功地查询并适配了 Vertex AI 的最新可用模型列表，确保了 AI 功能的正常运行。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Lark 事件回调配置：&lt;/strong&gt; 针对 Lark 事件回调的复杂性，我们与 Claude 协作，通过不断尝试和调试，最终成功配置了机器人能够接收和处理各类事件。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;动态工具库与偏好学习：&lt;/strong&gt; Claude 协助我们设计并实现了动态工具库的加载机制，使得智能体可以根据需求加载和使用不同的工具。同时，我们也初步构建了偏好学习系统，让智能体能够根据用户交互逐步优化其行为。&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;持久记忆系统：&lt;/strong&gt; 利用 SQLite，我们为智能体构建了持久化的记忆存储，使其能够记住用户的偏好、历史对话等信息，提供更个性化的服务。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;智能体的初步雏形与未来展望&#34;&gt;智能体的初步雏形与未来展望&lt;/h2&gt;&#xA;&lt;p&gt;经过一系列的开发和调试，我们的智能体已初步具备了雏形。它能够：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
