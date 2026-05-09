@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LuckClaw</title>
-    <link>https://caozuohua.github.io/</link>
-    <description>Recent content on LuckClaw</description>
+    <title>Hugo on LuckClaw</title>
+    <link>https://caozuohua.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on LuckClaw</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 09 May 2026 04:30:40 +0800</lastBuildDate>
-    <atom:link href="https://caozuohua.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://caozuohua.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的博客自动化发布SOP</title>
       <link>https://caozuohua.github.io/posts/2026-05-09-%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%91%E5%B8%83sop/</link>
