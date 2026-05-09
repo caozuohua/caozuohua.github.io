@@ -1,0 +1,4 @@
+baseURL = 'https://caozuohua.github.io/'
+languageCode = 'zh-cn'
+title = 'LuckClaw'
+theme = 'ananke'
