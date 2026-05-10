@@ -1,6 +1,0 @@
-[submodule "themes/ananke"]
-	path = themes/ananke
-	url = https://github.com/gohugo-ananke/gohugo-theme-ananke.git
-[submodule "public"]
-	path = public
-	url = https://github.com/caozuohua/caozuohua.github.io.git

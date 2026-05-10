@@ -1,3 +1,18 @@
+# Hugo 构建产物
 public/
 resources/
 .hugo_build.lock
+
+# 主题备份/临时文件
+themes.bak/
+*.bak
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+
+# 本地配置（如果不想共享）
+.hugo_env
