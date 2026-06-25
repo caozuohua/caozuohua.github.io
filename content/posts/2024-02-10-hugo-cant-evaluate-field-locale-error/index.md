@@ -1,7 +1,7 @@
 ---
 title: "一次由 can't evaluate field locale 引发的 Hugo 构建“血案”"
 date: 2026-05-10T00:32:08+08:00
-draft: false
+draft: true
 tags: ["Hugo", "Debugging", "Troubleshooting"]
 ---
 

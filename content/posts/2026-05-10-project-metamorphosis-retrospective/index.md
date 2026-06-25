@@ -1,7 +1,7 @@
 ---
-title: "项目Metamorphosis：一篇关于AI自我进化的技术复盘"
+title: "项目 Metamorphosis：AI 自我进化的技术复盘"
 date: 2026-05-10T01:07:52+08:00
-draft: false
+draft: true
 tags: ["AI", "Agent", "自我进化", "技术复盘"]
 ---
 

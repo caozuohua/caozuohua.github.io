@@ -1,7 +1,7 @@
 ---
-title: "深度解析agent 的基石：Shell 命令执行工具的架构与实践"
+title: "深度解析 Agent 的基石：Shell 命令执行工具的架构与实践"
 date: 2026-05-10T01:07:24+08:00
-draft: false
+draft: true
 tags: ["Agent", "Shell", "架构", "技术实践"]
 ---
 

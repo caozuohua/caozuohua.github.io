@@ -1,7 +1,7 @@
 ---
 title: "Agent 日记系列（二）：探秘 Agent 的大脑中枢：主控制器与生命周期"
 date: 2026-05-10T00:31:43+08:00
-draft: false
+draft: true
 tags: ["Agent", "Controller", "Architecture"]
 ---
 

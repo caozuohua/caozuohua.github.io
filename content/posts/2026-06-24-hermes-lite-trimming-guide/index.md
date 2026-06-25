@@ -1,5 +1,5 @@
 ---
-title: "Hermes-lite 裁剪经验总结：在 GCP e2-micro 上跑一个轻量 AI Agent"
+title: "Hermes-lite 裁剪指南：在 1GB VPS 上跑轻量 AI Agent"
 date: 2026-06-24T23:58:52Z
 draft: false
 tags: ["Hermes", "AI Agent", "GCP", "轻量化", "LLM", "系统运维"]
