@@ -3,6 +3,8 @@ title: "记一次复杂的博客仓库修复过程"
 date: 2026-05-08T15:40:39+08:00
 draft: false
 tags: ["DevOps", "Git", "Hugo", "Troubleshooting"]
+aliases:
+  - /posts/2026-05-08-记一次复杂的博客仓库修复过程/
 ---
 
 ## 问题起源：一次失败的博客发布
