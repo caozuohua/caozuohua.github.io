@@ -82,7 +82,6 @@
           </svg>
         </button>
         <ul class="top-nav-links">
-          <li><a href="{{ .Site.Home.RelPermalink }}">Blog</a></li>
           {{ range .Site.Menus.main }}
             <li><a href="{{ .URL }}">{{ .Name }}</a></li>
           {{ end }}
