@@ -1,0 +1,216 @@
+{{ define "header" }}
+  {{/* Skip the default page-header - we render our own header */}}
+{{ end }}
+
+{{ define "main" }}
+  {{- $related_content := .RegularPages.Related . -}}
+  {{- $needs_aside := or .Params.toc $related_content -}}
+  {{ $page := .}}
+  {{ $section := .Site.GetPage "section" .Section }}
+
+  <div class="page-wrapper">
+    <!-- Sidebar TOC -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">目录</div>
+      <nav class="toc-nav" id="toc-nav">
+        <!-- TOC will be populated by JavaScript -->
+      </nav>
+      <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+        <a href="{{ .Site.Home.RelPermalink }}" style="font-size: 0.8rem; color: var(--color-text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          返回首页
+        </a>
+      </div>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Reading progress bar -->
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <article>
+        <header style="margin-bottom: 2rem;">
+          <aside style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.5rem; letter-spacing: 0.05em;">
+            {{ .CurrentSection.Title }}
+          </aside>
+          <h1 style="font-size: 2rem; margin: 0 0 0.5rem 0;">
+            {{- .Title -}}
+          </h1>
+          <div style="font-size: 0.85rem; color: var(--color-text-muted); display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <time>
+              {{- .Date | time.Format "2006年1月2日" -}}
+            </time>
+            {{ if (or (compare.Eq (.Param "show_reading_time") true) (compare.Eq $section.Params.show_reading_time true) )}}
+              <span>· {{ lang.Translate "readingTime" .ReadingTime }}</span>
+              <span>· {{ .WordCount }} 字</span>
+            {{ end }}
+          </div>
+        </header>
+
+        <div class="post-content">
+          {{- .Content -}}
+        </div>
+
+        {{- partials.Include "tags.html" . -}}
+
+        <!-- Post navigation -->
+        <nav style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          {{ with .PrevInSection }}
+            <a href="{{ .RelPermalink }}" style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; transition: all 0.2s;">
+              <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.25rem;">← 上一篇</div>
+              <div style="font-size: 0.85rem; color: var(--color-text); font-weight: 500;">{{ .Title }}</div>
+            </a>
+          {{ end }}
+          {{ with .NextInSection }}
+            <a href="{{ .RelPermalink }}" style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); text-decoration: none; text-align: right; transition: all 0.2s;">
+              <div style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.25rem;">下一篇 →</div>
+              <div style="font-size: 0.85rem; color: var(--color-text); font-weight: 500;">{{ .Title }}</div>
+            </a>
+          {{ end }}
+        </nav>
+      </article>
+
+      <footer class="site-footer">
+        <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script>
+    // ===== TOC Generation =====
+    (function() {
+      const article = document.querySelector('.post-content');
+      const tocNav = document.getElementById('toc-nav');
+      if (!article || !tocNav) return;
+
+      const headings = article.querySelectorAll('h2, h3');
+      if (headings.length === 0) {
+        tocNav.innerHTML = '<p style="font-size: 0.8rem; color: var(--color-text-muted); padding: 0 0.5rem;">暂无目录</p>';
+        return;
+      }
+
+      const ul = document.createElement('ul');
+      ul.className = 'toc-list';
+
+      headings.forEach(function(heading, index) {
+        // Create anchor if not exists
+        if (!heading.id) {
+          var slug = heading.textContent.toLowerCase()
+            .replace(/[^\w\u4e00-\u9fff\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .substring(0, 50);
+          heading.id = slug || ('heading-' + index);
+        }
+
+        const li = document.createElement('li');
+        if (heading.tagName === 'H3') {
+          li.className = 'toc-h3';
+        }
+
+        const a = document.createElement('a');
+        a.href = '#' + heading.id;
+        a.textContent = heading.textContent;
+        a.setAttribute('data-target', heading.id);
+
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      tocNav.appendChild(ul);
+    })();
+
+    // ===== Active TOC Highlight on Scroll =====
+    (function() {
+      const headings = document.querySelectorAll('.post-content h2, .post-content h3');
+      const tocLinks = document.querySelectorAll('.toc-list a');
+      if (headings.length === 0) return;
+
+      function updateActive() {
+        let currentId = '';
+        headings.forEach(function(h) {
+          if (h.getBoundingClientRect().top < 100) {
+            currentId = h.id;
+          }
+        });
+        tocLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('data-target') === currentId) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+    })();
+
+    // ===== Reading Progress Bar =====
+    (function() {
+      const bar = document.getElementById('reading-progress');
+      if (!bar) return;
+
+      function updateProgress() {
+        const doc = document.documentElement;
+        const scrollTop = window.scrollY;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = progress + '%';
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    })();
+
+    // ===== Mobile Sidebar Toggle =====
+    (function() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+      const hamburger = document.getElementById('hamburger-btn');
+
+      function toggleSidebar() {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+      }
+
+      if (hamburger) hamburger.addEventListener('click', toggleSidebar);
+      if (overlay) overlay.addEventListener('click', closeSidebar);
+
+      // Close sidebar when clicking a link (mobile)
+      document.querySelectorAll('.toc-list a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 960) {
+            closeSidebar();
+          }
+        });
+      });
+    })();
+
+    // ===== Smooth Scroll for TOC links =====
+    document.querySelectorAll('.toc-list a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target') || this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+{{ end }}
+
+{{ define "footer" }}
+  {{/* Footer is defined inline */}}
+{{ end }}

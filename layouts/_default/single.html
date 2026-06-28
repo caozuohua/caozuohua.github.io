@@ -1,0 +1,61 @@
+{{ define "header" }}
+  {{/* Simple header for pages */}}
+  <header style="background: linear-gradient(135deg, #1a1a2e 0%, #312e81 50%, #1e40af 100%); padding: 2rem 2rem 3rem; text-align: center;">
+    <h1 style="color: white; font-size: 2rem; margin: 0; font-weight: 700; font-family: var(--font-serif);">{{ .Title }}</h1>
+  </header>
+{{ end }}
+
+{{ define "main" }}
+  {{ $page := .}}
+  {{ $section := .Site.GetPage "section" .Section }}
+
+  <div class="page-wrapper">
+    <!-- Reading progress bar -->
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <article>
+        <header style="margin-bottom: 2rem;">
+          <h1 style="font-size: 2rem; margin: 0 0 0.5rem 0;">
+            {{- .Title -}}
+          </h1>
+          {{ with .Params.description }}
+            <p style="color: var(--color-text-secondary); margin: 0;">{{ . }}</p>
+          {{ end }}
+        </header>
+
+        <div class="post-content">
+          {{- .Content -}}
+        </div>
+      </article>
+
+      <footer class="site-footer">
+        <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script>
+    // ===== Reading Progress Bar =====
+    (function() {
+      const bar = document.getElementById('reading-progress');
+      if (!bar) return;
+      function updateProgress() {
+        const doc = document.documentElement;
+        const scrollTop = window.scrollY;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = progress + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    })();
+  </script>
+{{ end }}
+
+{{ define "footer" }}
+  {{/* Footer is defined inline */}}
+{{ end }}

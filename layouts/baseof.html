@@ -43,22 +43,18 @@
       <link rel="canonical" href="{{ .Permalink }}">
     {{ end }}
 
-    {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates */}}
-    {{/* former internal templates */}}
     {{ partial "opengraph.html" . -}}
     {{ partial "schema.html" . -}}
     {{ partial "twitter_cards.html" . -}}
 
     {{ if hugo.IsProduction }}
-      {{/* former internal template */}}
       {{ partial "google_analytics.html" . }}
     {{ end }}
-	{{ block "head" . }}{{ partials.Include "head-additions.html" . }}{{ end }}
+    {{ block "head" . }}{{ partials.Include "head-additions.html" . }}{{ end }}
   </head>
 
   {{- $environment := hugo.Environment | default "production" -}}
 
-  {{/* Generate dynamic classes for the body tag */}}
   {{- $body_classes := slice "ma0" ($.Param "body_classes" | default "avenir bg-near-white") $environment -}}
   {{- $body_classes = $body_classes | append (printf "is-%s" .Kind) -}}
 
@@ -72,8 +68,30 @@
   {{- if .IsSection -}}{{- $body_classes = $body_classes | append "is-section" -}}{{- end -}}
 
   <body class="{{ delimit $body_classes " " }}">
-    {{ block "header" . }}{{ partials.Include "site-header.html" .}}{{ end }}
-    <main class="pb7" role="main">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="top-nav-inner">
+        <a href="{{ .Site.Home.RelPermalink }}" class="top-nav-logo">
+          {{ .Site.Title }}
+        </a>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="打开目录">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <ul class="top-nav-links">
+          <li><a href="{{ .Site.Home.RelPermalink }}">Blog</a></li>
+          {{ range .Site.Menus.main }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </nav>
+
+    {{ block "header" . }}{{ end }}
+    <main role="main">
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partials.IncludeCached "site-footer.html" . }}{{ end }}

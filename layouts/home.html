@@ -1,0 +1,82 @@
+{{ define "header" }}
+  {{/* Hero header for home page */}}
+  <header style="background: linear-gradient(135deg, #1a1a2e 0%, #312e81 50%, #1e40af 100%); padding: 3rem 2rem 4rem; text-align: center;">
+    <h1 style="color: white; font-size: 2.5rem; margin: 0 0 0.5rem 0; font-weight: 700; font-family: var(--font-serif);">{{ .Site.Title }}</h1>
+    {{ with .Site.Params.description }}
+      <p style="color: rgba(255,255,255,0.8); font-size: 1rem; margin: 0;">{{ . }}</p>
+    {{ end }}
+  </header>
+{{ end }}
+
+{{ define "main" }}
+
+  {{- $config := site.Params.ananke.home -}}
+  {{- $text_alignment := "tc-l" -}}
+  {{- if eq $config.content_alignment "left" -}}
+    {{- $text_alignment = "tl-l" -}}
+  {{- else if eq $config.content_alignment "right" -}}
+    {{- $text_alignment = "tr-l" -}}
+  {{- end -}}
+
+  {{/* Hero section on home page */}}
+  {{ if .IsHome }}
+  <div style="text-align: center; padding: 4rem 2rem 3rem;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">{{ .Site.Title }}</h1>
+    {{ with .Site.Params.description }}
+      <p style="font-size: 1.05rem; color: var(--color-text-secondary); margin: 0;">{{ . }}</p>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <div style="max-width: var(--content-max-width); margin: 0 auto; padding: 0 3rem 2rem;">
+    {{ if not .IsHome }}
+    <article class="cf ph3 ph5-l pv3 pv4-l f4 {{ $text_alignment }} center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
+      {{ .Content }}
+    </article>
+    {{ end }}
+
+    {{/* Define a section to pull recent posts from. */}}
+    {{ $mainSections := site.Params.mainSections | compare.Default (collections.Slice "post") }}
+    {{ $show_recent_posts := site.Params.ananke.show_recent_posts }}
+    {{ $section := collections.Where $.Site.RegularPages "Section" "in" $mainSections }}
+    {{ $section_count := len $section }}
+
+    {{ if and ($show_recent_posts) (compare.Ge $section_count 1) }}
+      <section class="w-100">
+        {{ $n_posts := $.Param "recent_posts_number" | compare.Default 3 }}
+
+        {{/* Range through the first $n_posts items */}}
+        <ul class="post-list">
+          {{ range (collections.First $n_posts $section) }}
+            <li class="post-list-item">
+              <div class="post-meta">
+                <time>{{ .Date | time.Format "2006年1月2日" }}</time>
+                {{ if .ReadingTime }}
+                  <span>· {{ .ReadingTime }} 分钟阅读</span>
+                {{ end }}
+              </div>
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p class="post-summary">{{ .Summary | truncate 120 }}</p>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+
+      {{ if compare.Ge $section_count (math.Add $n_posts 1) }}
+        <section class="w-100" style="margin-top: 3rem;">
+          <h2 style="font-size: 1.2rem; border: none; margin-bottom: 1rem;">更多文章</h2>
+          <ul class="post-list">
+            {{ range (collections.First 10 (collections.After $n_posts $section))  }}
+              <li class="post-list-item">
+                <div class="post-meta">
+                  <time>{{ .Date | time.Format "2006年1月2日" }}</time>
+                </div>
+                <h4 style="margin: 0; font-size: 1rem;"><a href="{{ .RelPermalink }}" style="color: var(--color-text-secondary);">{{ .Title }}</a></h4>
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
