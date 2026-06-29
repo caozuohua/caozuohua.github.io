@@ -18,16 +18,6 @@
     {{- $text_alignment = "tr-l" -}}
   {{- end -}}
 
-  {{/* Hero section on home page */}}
-  {{ if .IsHome }}
-  <div style="text-align: center; padding: 4rem 2rem 3rem;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">{{ .Site.Title }}</h1>
-    {{ with .Site.Params.description }}
-      <p style="font-size: 1.05rem; color: var(--color-text-secondary); margin: 0;">{{ . }}</p>
-    {{ end }}
-  </div>
-  {{ end }}
-
   <div style="max-width: var(--content-max-width); margin: 0 auto; padding: 0 3rem 2rem;">
     {{ if not .IsHome }}
     <article class="cf ph3 ph5-l pv3 pv4-l f4 {{ $text_alignment }} center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
