@@ -6,6 +6,7 @@ description: "从完整版 Hermes Agent 裁剪到 Hermes-lite 过程中遇到的
 tags: ["hermes", "轻量化", "troubleshooting", "ai-agent", "架构"]
 categories: ["技术复盘"]
 draft: false
+aliases: ["/posts/hermes-lite-pitfalls-deep-dive/"]
 ---
 
 上一篇文章介绍了 Hermes-lite 的整体裁剪思路。这篇深入每一类实际踩过的坑，

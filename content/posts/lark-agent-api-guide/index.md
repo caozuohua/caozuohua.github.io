@@ -1,9 +1,11 @@
 ---
 title: "Lark 智能体开发：消息/事件/卡片交互接口指南"
 date: 2026-05-14T23:41:20+00:00
+description: "Lark 国际版智能体开发实战：消息发送、事件订阅、卡片交互、Lark Base 集成四大核心能力的 Python 接口详解。"
 draft: false
 tags: ["Lark", "Agent", "API", "个人助理"]
 categories: ["技术"]
+aliases: ["/posts/lark-agent-api-guide"]
 ---
 
 

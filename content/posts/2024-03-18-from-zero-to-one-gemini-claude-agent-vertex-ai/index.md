@@ -1,8 +1,10 @@
 ---
 title: "从零到一：基于 Gemini 和 Claude 的智能体开发实战（集成 Vertex AI）"
 date: 2024-03-18T00:31:16+08:00
+description: "从技术选型到上线，手把手构建一个支持多模型切换和 Vertex AI 集成的 AI Agent。覆盖 Gemini 与 Claude 的对比、双模型协作架构和 GCP 部署流程。"
 draft: false
 tags: ["Agent", "Gemini", "Claude", "Vertex AI"]
+aliases: ["/posts/from-zero-to-one-gemini-claude-agent-vertex-ai"]
 ---
 
 构建一个真正能用的 AI Agent，不是调 API 写段对话就完事。你需要的是：能接工具、能记忆、能扩展、能上线的完整系统。

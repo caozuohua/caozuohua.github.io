@@ -1,8 +1,10 @@
 ---
 title: "Agent 日记系列（二）：探秘 Agent 的大脑中枢：主控制器与生命周期"
 date: 2024-04-05T00:31:43+08:00
+description: "Agent 主控制器的源码级拆解：核心循环为什么是状态机、意图识别怎么做、工具选择策略和终止条件设计。"
 draft: false
 tags: ["Agent", "Controller", "Architecture"]
+aliases: ["/posts/agent-diary-series-2-controller-lifecycle"]
 ---
 
 主控制器是 Agent 的"大脑"——它决定何时思考、何时行动、何时停止。理解主控制器的设计，就理解了 Agent 的运作范式。

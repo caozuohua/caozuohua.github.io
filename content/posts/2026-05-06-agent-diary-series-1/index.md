@@ -1,8 +1,10 @@
 ---
 title: "Agent 日记系列（一）：AI 助手协作痛点与进化实践"
 date: 2026-05-06T00:32:00+08:00
+description: "当前 AI 助手的五大痛点——工具编排僵化、跨会话无记忆、单 Agent 天花板、上下文窗口瓶颈、错误恢复缺失——以及从 nanobot 到 Hermes-lite 的进化路径。"
 draft: false
 tags: ["Agent", "Pain Points", "Evolution"]
+aliases: ["/posts/agent-diary-series-1"]
 ---
 
 当前 AI 助手在复杂场景下暴露出的种种局限，促使我们思考：如何让 Agent 从"工具调用者"进化为"自适应系统"？

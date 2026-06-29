@@ -1,8 +1,10 @@
 ---
 title: "Agent 日记系列（四）：构建 Agent 的记忆宫殿：持久化存储系统解析"
 date: 2024-04-20T00:31:50+08:00
+description: "Agent 跨会话记忆的实现方案：身份记忆、环境记忆、经验记忆三层分层 + Turso 持久化存储。"
 draft: false
 tags: ["Agent", "Memory", "Turso", "Database"]
+aliases: ["/posts/agent-diary-series-4-memory-persistence"]
 ---
 
 Agent 没有记忆，就是"金鱼脑"——每次对话从头开始，重复犯错、忘记偏好。持久化记忆系统要解决的是：**跨会话保留什么、怎么存、怎么取。**

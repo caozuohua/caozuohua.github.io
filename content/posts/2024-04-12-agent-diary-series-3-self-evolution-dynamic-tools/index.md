@@ -1,8 +1,10 @@
 ---
 title: "Agent 日记系列（三）：揭秘 Agent 的自我进化：动态工具创建与管理"
 date: 2024-04-12T00:31:35+08:00
+description: "Agent 怎么在运行时发现能力缺口并自建工具：从批量文件重命名到 API 数据聚合，拆解动态工具创建的完整流程和生命周期管理。"
 draft: false
 tags: ["Agent", "Self-evolution", "Tool Creation"]
+aliases: ["/posts/agent-diary-series-3-self-evolution-dynamic-tools"]
 ---
 
 传统 Agent 的能力在诞生时就固定了——给什么工具就用什么工具。真正的自进化 Agent 应该能在运行时识别能力缺口，自主扩展工具集。
