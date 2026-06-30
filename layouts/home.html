@@ -1,10 +1,12 @@
 {{ define "header" }}
-  {{/* Hero header for home page */}}
-  <header style="background: linear-gradient(135deg, #1a1a2e 0%, #312e81 50%, #1e40af 100%); padding: 3rem 2rem 4rem; text-align: center;">
-    <h1 style="color: white; font-size: 2.5rem; margin: 0 0 0.5rem 0; font-weight: 700; font-family: var(--font-serif);">{{ .Site.Title }}</h1>
+  <header class="home-hero">
+    <div class="home-hero-inner">
+      <p class="home-kicker">Personal notes on technology and systems</p>
+      <h1>{{ .Site.Title }}</h1>
     {{ with .Site.Params.description }}
-      <p style="color: rgba(255,255,255,0.8); font-size: 1rem; margin: 0;">{{ . }}</p>
+        <p>{{ . }}</p>
     {{ end }}
+    </div>
   </header>
 {{ end }}
 
@@ -18,17 +20,7 @@
     {{- $text_alignment = "tr-l" -}}
   {{- end -}}
 
-  {{/* Hero section on home page */}}
-  {{ if .IsHome }}
-  <div style="text-align: center; padding: 4rem 2rem 3rem;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">{{ .Site.Title }}</h1>
-    {{ with .Site.Params.description }}
-      <p style="font-size: 1.05rem; color: var(--color-text-secondary); margin: 0;">{{ . }}</p>
-    {{ end }}
-  </div>
-  {{ end }}
-
-  <div style="max-width: var(--content-max-width); margin: 0 auto; padding: 0 3rem 2rem;">
+  <div class="home-container">
     {{ if not .IsHome }}
     <article class="cf ph3 ph5-l pv3 pv4-l f4 {{ $text_alignment }} center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
       {{ .Content }}
@@ -36,47 +28,60 @@
     {{ end }}
 
     {{/* Define a section to pull recent posts from. */}}
-    {{ $mainSections := site.Params.mainSections | compare.Default (collections.Slice "post") }}
+    {{ $mainSections := site.Params.mainSections | compare.Default (collections.Slice "posts" "post") }}
     {{ $show_recent_posts := site.Params.ananke.show_recent_posts }}
-    {{ $section := collections.Where $.Site.RegularPages "Section" "in" $mainSections }}
+    {{ $section := (collections.Where $.Site.RegularPages "Section" "in" $mainSections).ByDate.Reverse }}
     {{ $section_count := len $section }}
 
     {{ if and ($show_recent_posts) (compare.Ge $section_count 1) }}
-      <section class="w-100">
-        {{ $n_posts := $.Param "recent_posts_number" | compare.Default 3 }}
+      {{ $n_posts := $.Param "recent_posts_number" | compare.Default 4 }}
+      {{ $recent := collections.First $n_posts $section }}
+      {{ $older := collections.After $n_posts $section }}
 
-        {{/* Range through the first $n_posts items */}}
-        <ul class="post-list">
-          {{ range (collections.First $n_posts $section) }}
-            <li class="post-list-item">
-              <div class="post-meta">
-                <time>{{ .Date | time.Format "2006年1月2日" }}</time>
-                {{ if .ReadingTime }}
-                  <span>· {{ .ReadingTime }} 分钟阅读</span>
-                {{ end }}
-              </div>
-              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-              <p class="post-summary">{{ .Summary | truncate 120 }}</p>
-            </li>
-          {{ end }}
-        </ul>
-      </section>
+      <div class="home-article-layout">
+        {{ if compare.Ge (len $older) 1 }}
+          <aside class="archive-index" aria-labelledby="archive-title">
+            <div class="archive-sticky">
+              <p class="archive-label">Archive</p>
+              <h2 id="archive-title">更多文章</h2>
+              {{ range ($older.GroupByDate "2006年01月") }}
+                <section class="archive-month">
+                  <h3>{{ .Key }}</h3>
+                  <ol>
+                    {{ range .Pages }}
+                      <li>
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "01-02" }}</time>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                      </li>
+                    {{ end }}
+                  </ol>
+                </section>
+              {{ end }}
+            </div>
+          </aside>
+        {{ end }}
 
-      {{ if compare.Ge $section_count (math.Add $n_posts 1) }}
-        <section class="w-100" style="margin-top: 3rem;">
-          <h2 style="font-size: 1.2rem; border: none; margin-bottom: 1rem;">更多文章</h2>
+        <section class="latest-posts" aria-labelledby="latest-title">
+          <div class="section-heading">
+            <p>Latest</p>
+            <h2 id="latest-title">最新文章</h2>
+          </div>
           <ul class="post-list">
-            {{ range (collections.First 10 (collections.After $n_posts $section))  }}
+            {{ range $recent }}
               <li class="post-list-item">
                 <div class="post-meta">
-                  <time>{{ .Date | time.Format "2006年1月2日" }}</time>
+                  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "2006年1月2日" }}</time>
+                  {{ if .ReadingTime }}
+                    <span>· {{ .ReadingTime }} 分钟阅读</span>
+                  {{ end }}
                 </div>
-                <h4 style="margin: 0; font-size: 1rem;"><a href="{{ .RelPermalink }}" style="color: var(--color-text-secondary);">{{ .Title }}</a></h4>
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p class="post-summary">{{ .Summary | transform.Plainify | truncate 132 }}</p>
               </li>
             {{ end }}
           </ul>
         </section>
-      {{ end }}
+      </div>
     {{ end }}
   </div>
 {{ end }}
