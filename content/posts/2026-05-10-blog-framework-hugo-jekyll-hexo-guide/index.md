@@ -3,6 +3,8 @@ title: "个人博客框架完全指南：深入解析Hugo、对比Jekyll/Hexo及
 date: 2026-05-10T15:20:28+08:00
 draft: false
 tags: ["Hugo", "Blog", "Static Site Generator", "Jekyll", "Hexo", "GitHub Actions"]
+description: "解释静态网站生成器的基本原理，比较 Hugo、Jekyll、Hexo 等框架，并给出基于 GitHub Actions 的 Hugo 自动部署思路。"
+lastmod: 2026-06-30
 aliases:
   - /posts/2026-05-10-个人博客框架完全指南：深入解析hugo、对比jekyll-hexo及高效工具链/
 ---

@@ -10,7 +10,7 @@ aliases:
 
 ## 为什么要裁剪
 
-完整版 Hermes Agent（Nous Research）功能丰富：多平台网关、浏览器自动化、语音 TTS/STTS、多 Agent 协作、Kanban 看板等。但这些功能对资源要求不低——官方文档建议至少 2GB 内存。
+完整版 Hermes Agent（Nous Research）功能丰富：多平台网关、浏览器自动化、语音 TTS/STT、多 Agent 协作、Kanban 看板等。但这些功能对资源要求不低——在我的测试里，完整配置更适合至少 2GB 内存的机器。
 
 我有一台 GCP e2-micro（2 vCPU / 954MB RAM），想用它跑一个 24/7 在线的 AI Agent 接入飞书。完整版装不下，于是有了这个裁剪实践。
 
@@ -54,7 +54,7 @@ aliases:
 ## 裁剪目标
 
 - **保留**：核心 Agent 能力（工具调用、技能系统、记忆、会话搜索、终端/文件操作）
-- **去掉**：浏览器、语音 TTS/STTS、图片生成、多 Agent 协作、Kanban 等重功能
+- **去掉**：浏览器、语音 TTS/STT、图片生成、多 Agent 协作、Kanban 等重功能
 - **约束**：内存占用控制在 500MB 以内，能稳定运行在 e2-micro 上
 
 ## 环境概况
@@ -66,13 +66,12 @@ aliases:
 | 内存 | 954MB |
 | 磁盘 | 28GB (36% 使用) |
 | 系统 | Ubuntu 24.04 LTS (kernel 6.17) |
-| Hugo | v0.161.1 extended |
 
 ## 裁剪步骤
 
 ### 1. 安装完整版 Hermes
 
-先用官方脚本安装完整版，确认能跑起来，再逐步裁剪：
+先用安装脚本安装完整版，确认能跑起来，再逐步裁剪：
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash

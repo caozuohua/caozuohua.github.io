@@ -140,7 +140,7 @@ iptables -A DOCKER-USER -j DROP
 
 ### 自愈机制：iptables-hardening.service
 
-**踩坑**：Docker restart 会清空 DOCKER-USER 链的自定义规则。容器重启一次，加固全丢。
+**踩坑**：主机重启、Docker 重启或网络规则被其他脚本重写后，DOCKER-USER 链上的自定义规则可能缺失。不要假设规则永远存在，重启后必须验证。
 
 ```ini
 # /etc/systemd/system/iptables-hardening.service

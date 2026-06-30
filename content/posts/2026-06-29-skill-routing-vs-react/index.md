@@ -1,5 +1,5 @@
 ---
-title: "Agent 系列日记 5：为什么 Skill 路由比 React 控制器更适合个人助理"
+title: "Agent 系列日记 5：为什么 Skill 路由比 ReAct 控制器更适合个人助理"
 date: 2026-06-29
 publishDate: 2026-06-29
 description: "从 luck-agent 到 Hermes-lite，我花了两年时间才想清楚这个问题：80% 的请求不需要'思考'，只需要'路由'。"
@@ -11,7 +11,7 @@ aliases: ["/posts/skill-routing-vs-react"]
 
 > 从 luck-agent 到 Hermes-lite，我花了两年时间才想清楚这个问题：80% 的请求不需要"思考"，只需要"路由"。
 
-## 回顾：React 控制器模式的困境
+## 回顾：ReAct 控制器模式的困境
 
 2024 年做 luck-agent 的时候，我采用的是经典的 **ReAct 模式**（Reasoning + Acting）：
 
@@ -35,7 +35,7 @@ aliases: ["/posts/skill-routing-vs-react"]
 
 我当时就在知识库里记了一条：
 
-> "对于个人助理场景，相比最初的 React 控制器模式，Skill 技能路由更适合当前 luckagent：80% 请求是固定模式，不需要复杂推理，技能比 Agent 更稳定，成本更低，响应更快。"
+> "对于个人助理场景，相比最初的 ReAct 控制器模式，Skill 技能路由更适合当前 luckagent：80% 请求是固定模式，不需要复杂推理，技能比 Agent 更稳定，成本更低，响应更快。"
 
 ## Skill 路由的核心思想
 
@@ -73,7 +73,7 @@ ROUTING_RULES = {
 
 ### 对比：同样"查 QPC"操作
 
-| 指标 | React 模式 | Skill 路由 |
+| 指标 | ReAct 模式 | Skill 路由 |
 |------|-----------|-----------|
 | 上下文 token | ~4000（全量工具定义） | ~800（仅 QPC 相关） |
 | 首次响应延迟 | 3-8s | 0.5-1.5s |
@@ -126,7 +126,7 @@ triggers:
 我用同样的操作"搜索 QPC 里 VPS 相关的记录"做了实测：
 
 ```
-React 模式：
+ReAct 模式：
   - System prompt: 3,200 tokens
   - 推理过程: 1,500 tokens
   - 工具调用: 800 tokens
@@ -140,7 +140,7 @@ Skill 路由：
 节省: 85%
 ```
 
-## 什么时候 React 模式仍然有用
+## 什么时候 ReAct 模式仍然有用
 
 Skill 路由不是万能的。以下场景仍然需要完整的推理链：
 
@@ -171,7 +171,7 @@ def handle_input(user_input):
 
 回顾这两年，我的 Agent 架构经历了三个阶段：
 
-### 2024：全 React 控制器
+### 2024：全 ReAct 控制器
 
 ```
 用户 → luck-agent → 大模型推理 → 工具调用 → 输出
@@ -185,7 +185,7 @@ def handle_input(user_input):
 
 ```
 用户 → 路由层 → Skill（70%）→ 快速执行
-                → React（30%）→ 完整推理
+                → ReAct（30%）→ 完整推理
 ```
 
 - 引入 Skill 路由层
@@ -196,7 +196,7 @@ def handle_input(user_input):
 
 ```
 用户 → Hermes-lite → Skill 路由（80%）→ 按需加载 skill_view
-                            → React（20%）→ 完整推理
+                            → ReAct（20%）→ 完整推理
                     → Memory 分层：
                        - 当前对话（context window）
                        - memory.db（跨 session）
@@ -212,7 +212,7 @@ def handle_input(user_input):
 | 场景 | 推荐模式 | 原因 |
 |------|---------|------|
 | 高频简单操作（查记录、查状态、发消息） | Skill 路由 | 快、省、稳 |
-| 低频复杂推理（设计架构、分析问题） | React 模式 | 需要完整推理链 |
+| 低频复杂推理（设计架构、分析问题） | ReAct 模式 | 需要完整推理链 |
 | 不确定 | 混合策略 | 路由优先，fallback 推理 |
 
 **不要迷信一个模式能解决所有问题。** 个人助理的核心不是"多智能"，而是在对的场景用对的方式。80% 的时候，一个 if-else 路由比大模型推理更好用。

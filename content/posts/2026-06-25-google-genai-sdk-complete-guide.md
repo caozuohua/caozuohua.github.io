@@ -254,8 +254,11 @@ Gemini 3.x 模型在 thinking 模式下会返回 `thought_signature`（二进制
 **解法 1：Interactions API（SDK 自动处理，推荐）**
 
 ```python
-# SDK 自动管理 thought_signature，不用手动传
-interaction = client.interactions.create(model="gemini-3.5-flash")
+# SDK 自动管理 interaction state，不用手动传 thought_signature
+interaction = client.interactions.create(
+    model="gemini-3.5-flash",
+    input="What's the weather in Berlin?",
+)
 ```
 
 **解法 2：手动 generate_content（自己捕获和回放）**

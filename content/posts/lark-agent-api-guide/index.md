@@ -4,12 +4,16 @@ date: 2026-05-14T23:41:20+00:00
 draft: false
 tags: ["Lark", "Agent", "API", "个人助理"]
 categories: ["技术"]
+description: "面向个人助理开发者的 Lark/飞书开放平台接口笔记，覆盖消息发送、事件接收、卡片交互和 Base 集成的核心概念与实现注意事项。"
+lastmod: 2026-06-30
 ---
 
 
 # Lark 国际版智能体开发：常用接口用法详解 (面向个人助理开发者)
 
-本文旨在为个人助理智能体开发者提供一份详尽的 Lark 国际版智能体开发指南，涵盖消息发送、事件接收、卡片交互以及 Lark Base 集成等核心功能。通过 Python 示例代码，我们将深入了解如何构建功能强大、高度定制化的智能助理。
+本文旨在为个人助理智能体开发者提供一份 Lark 国际版智能体开发指南，涵盖消息发送、事件接收、卡片交互以及 Lark Base 集成等核心功能。
+
+> 说明：文中的 Python 片段用于解释接口语义，偏伪代码。正式工程建议优先使用 Lark/飞书开放平台官方 SDK（常见 Python 包名为 `lark-oapi`）或直接按 OpenAPI 文档发起 HTTP 请求，并以官方文档的最新请求体为准。
 
 ## 1. 引言：Lark 智能体与个人助理的未来
 
@@ -34,14 +38,14 @@ categories: ["技术"]
 
 最基础的消息类型，用于发送纯文本内容。
 
-**Python 示例 (使用 `lark_sdk`)**:
+**Python 伪代码**:
 
 ```python
-from lark_sdk import Message, Text
+# 伪代码：实际项目请使用 lark-oapi 或 HTTP client 构造请求
 
 # 假设 client 是已初始化的 Lark SDK Client 实例
 # 假设 open_id 是接收消息的目标用户的 Open ID
-# 假设 access_token 是机器人的有效 Access Token
+# 假设 tenant_access_token 是应用的有效访问令牌
 
 text_message = Text(text="你好！这是一个文本消息。")
 message = Message(open_id=open_id, message_type="text", content=text_message.to_dict())
@@ -60,7 +64,7 @@ else:
 **Python 示例**:
 
 ```python
-from lark_sdk import Message, Post
+# 伪代码：实际字段名以 Lark OpenAPI 文档为准
 
 # 假设 client, open_id, access_token 已经准备好
 
@@ -90,7 +94,7 @@ else:
 **Python 示例 (发送一个简单的按钮卡片)**:
 
 ```python
-from lark_sdk import Message, Card
+# 伪代码：实际项目请用 lark-oapi 或 HTTP client 发送 interactive 消息
 
 card_json = {
     "config": {
@@ -105,8 +109,7 @@ card_json = {
                 {
                     "text": {
                         "tag": "lark_md",
-                        "content": "**欢迎使用 Lark 智能体！**
-这是一个交互式卡片。"
+                        "content": "**欢迎使用 Lark 智能体！**\n这是一个交互式卡片。"
                     }
                 }
             ]
@@ -159,7 +162,7 @@ else:
 
 ```python
 from flask import Flask, request, jsonify
-from lark_sdk import Event, Message, Text # 假设使用 Flask 作为 Web 框架
+# 伪代码：事件结构以 Lark OpenAPI 为准
 
 app = Flask(__name__)
 
@@ -256,16 +259,16 @@ if action_type == "click_button":
 
 Lark Base 是一个强大的数据管理工具，智能体可以与其进行深度集成，实现数据读写、自动化流程等。
 
-### 6.1. 获取 Lark Base API Token
+### 6.1. 获取 Lark Base 访问凭证
 
-您需要在 Lark 管理后台为您的应用创建一个 **Bot Token**，并启用 Lark Base 的访问权限。
+您需要在 Lark 开放平台创建应用，开通 Bitable/Base 相关权限，并在服务端通过 app credential 换取 `tenant_access_token`。实际读写表格时还需要目标 Base 的 `app_token`、`table_id` 以及相应字段权限。
 
 ### 6.2. 使用 Python SDK 操作 Lark Base
 
 **Python 示例 (读取 Base 数据)**:
 
 ```python
-from lark_sdk import BaseClient # 假设有 BaseClient
+# 伪代码：实际项目请使用 lark-oapi 的 bitable 接口或直接调用 OpenAPI
 
 # 假设 base_client 是已初始化的 Lark Base Client 实例
 # 假设 base_id 和 table_id 是目标 Base 和 Table 的 ID

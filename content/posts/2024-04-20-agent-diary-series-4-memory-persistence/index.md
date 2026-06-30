@@ -3,6 +3,8 @@ title: "Agent 日记系列（四）：构建 Agent 的记忆宫殿：持久化�
 date: 2024-04-20T00:31:50+08:00
 draft: false
 tags: ["Agent", "Memory", "Turso", "Database"]
+description: "从身份记忆、经验记忆和会话上下文三层出发，比较文本文件、SQLite、Turso/libSQL 与 Redis 在个人 Agent 记忆系统中的取舍。"
+lastmod: 2026-06-30
 ---
 
 Agent 没有记忆，就是"金鱼脑"——每次对话从头开始，重复犯错、忘记偏好。持久化记忆系统要解决的是：**跨会话保留什么、怎么存、怎么取。**

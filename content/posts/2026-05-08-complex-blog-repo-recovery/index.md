@@ -3,6 +3,8 @@ title: "记一次复杂的博客仓库修复过程"
 date: 2026-05-08T15:40:39+08:00
 draft: false
 tags: ["DevOps", "Git", "Hugo", "Troubleshooting"]
+description: "复盘一次 Hugo 博客仓库修复：源码与产物混淆、权限问题、Hugo 版本、主题模板兼容和 Git 历史分叉的逐层排查过程。"
+lastmod: 2026-06-30
 aliases:
   - /posts/2026-05-08-记一次复杂的博客仓库修复过程/
 ---
@@ -35,12 +37,12 @@ aliases:
 
 ### 第四层：主题模板的兼容性危机
 
-即便版本正确，构建依然失败。错误指向了主题模板中的一个已被废弃的变量 `site.Language.Locale`。
+即便版本正确，构建依然失败。错误指向了主题模板中的语言字段兼容性问题。需要注意：Hugo 版本变化后，`languageCode` / `.Site.LanguageCode` 与 `locale` / `.Site.Language.Locale` 的推荐方向会变，不能机械照抄旧修复。
 
 **解决方案**：我们采用了 Hugo 的“模板覆盖”机制，这是一个非常优雅的解决方案：
 1. 创建一个新的 `layouts` 目录。
 2. 将主题中存在问题的文件 `baseof.html` 复制过来。
-3. 使用 `sed` 命令精确地将 `site.Language.Locale` 替换为新的 `site.LanguageCode`。
+3. 使用 `sed` 命令精确调整语言字段引用，让当前 Hugo 版本能够正常构建。
 这样既修复了问题，又没有修改原始的主题文件。
 
 ### 第五层：Git 历史的终极谜题
