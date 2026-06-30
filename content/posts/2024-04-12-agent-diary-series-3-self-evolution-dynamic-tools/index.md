@@ -5,6 +5,7 @@ draft: false
 tags: ["Agent", "Self-evolution", "Tool Creation"]
 description: "讨论 Agent 何时需要动态创建工具、如何生成与注册工具、如何做安全审查，以及为什么工具组合通常比盲目造新工具更可控。"
 lastmod: 2026-06-30
+aliases: ["/posts/agent-diary-series-3-self-evolution-dynamic-tools"]
 ---
 
 传统 Agent 的能力在诞生时就固定了——给什么工具就用什么工具。真正的自进化 Agent 应该能在运行时识别能力缺口，自主扩展工具集。

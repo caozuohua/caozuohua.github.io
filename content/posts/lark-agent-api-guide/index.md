@@ -6,6 +6,7 @@ tags: ["Lark", "Agent", "API", "个人助理"]
 categories: ["技术"]
 description: "面向个人助理开发者的 Lark/飞书开放平台接口笔记，覆盖消息发送、事件接收、卡片交互和 Base 集成的核心概念与实现注意事项。"
 lastmod: 2026-06-30
+aliases: ["/posts/lark-agent-api-guide"]
 ---
 
 
