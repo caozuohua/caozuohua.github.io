@@ -1,8 +1,42 @@
-# blog-source
+# 🖋️ CAO ZUOHUA 技术博客
 
-Hugo 静态博客源码，部署在 https://caozuohua.github.io/
+> 分享技术、思考与生活 — Hugo 静态博客，部署在 https://caozuohua.github.io/
 
-## 目录结构
+[![Built with Hugo](https://img.shields.io/badge/Hugo-Ananke-ff4088)](https://gohugo.io)
+[![GitHub Pages](https://img.shields.io/badge/deploy-Pages-2ea44f)](https://caozuohua.github.io/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/caozuohua/caozuohua.github.io)](https://github.com/caozuohua/caozuohua.github.io/commits/main)
+
+🌐 在线访问：https://caozuohua.github.io/
+
+## 关于
+
+个人技术博客，聚焦 **AI Agent 实践与研究**、**技术探索**、**效率工具** 三大方向。截至 2026 年 7 月，共 21 篇文章。
+
+### 热门主题
+
+- 🤖 **AI Agent** — Agent 架构、记忆系统、多智能体协调、幻觉治理、工具调用
+- 🛠️ **技术实践** — Hermes Lite 调试、VPS 安全加固、搭建博客框架对比
+- 🏦 **投资与财经** — 基金组合分析、AI 驱动投资研究
+
+## 文章格式规范
+
+每篇文章是一个**目录型 bundle**，目录命名规则：
+
+```
+YYYY-MM-DD-english-slug
+```
+
+- 日期前缀（`YYYY-MM-DD`）— 用于排序，不强制要求是真实发布日期
+- 英文短横线连接的 slug — 会成为 URL 的一部分
+- **目录名不含中文**，避免 URL 编码
+
+### 创建新文章
+
+```bash
+hugo new content/posts/YYYY-MM-DD-your-english-slug/index.md
+```
+
+### 目录结构
 
 ```
 .
@@ -16,48 +50,7 @@ Hugo 静态博客源码，部署在 https://caozuohua.github.io/
 └── hugo.toml                          # 站点配置
 ```
 
-## 文章格式规范
-
-每篇文章是一个**目录型 bundle**，目录命名规则：
-
-```
-YYYY-MM-DD-english-slug
-```
-
-- 日期前缀（`YYYY-MM-DD`）— 用于排序，不强制要求是真实发布日期
-- 英文短横线连接的 slug — 会成为 URL 的一部分
-- **目录名不含中文**，避免 URL 编码后出现 `%XX`
-
-示例：`content/posts/2026-05-10-deep-dive-agent-shell-tool/index.md`
-
-## 创建新文章
-
-**正确方式：**
-
-```bash
-hugo new content/posts/YYYY-MM-DD-your-english-slug/index.md
-```
-
-Hugo 会自动创建目录和 `index.md`，并根据 `themes/ananke/archetypes/default.md` 生成 frontmatter 模板。
-
-**手动创建时务必遵守：**
-
-1. 创建目录，不是单个 `.md` 文件
-2. 目录名 = 日期 + 英文 slug，全小写，短横线分隔
-3. 文章写在 `index.md` 里
-4. frontmatter 中 `title` 可以是中文（显示用），但 `slug` 必须是英文
-
-**错误示例（不要这样做）：**
-
-```bash
-# ❌ 直接创建 .md 文件，没有目录
-touch content/posts/my-article.md
-
-# ❌ 目录名含中文
-mkdir content/posts/我的文章/
-```
-
-## Frontmatter 模板
+### Frontmatter 模板
 
 ```yaml
 ---
@@ -73,9 +66,8 @@ categories: ["分类"]
 
 ```bash
 hugo server -D
+# 访问 http://localhost:1313
 ```
-
-访问 http://localhost:1313
 
 ## 部署
 
@@ -88,3 +80,7 @@ git push origin main
 ```
 
 构建流程：`hugo --minify` → 产物上传 → 部署到 Pages
+
+## License
+
+MIT
