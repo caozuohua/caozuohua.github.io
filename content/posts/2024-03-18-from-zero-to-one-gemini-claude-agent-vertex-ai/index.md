@@ -3,6 +3,7 @@ title: "从零到一：基于 Gemini 和 Claude 的智能体开发实战（集�
 date: 2024-03-18T00:31:16+08:00
 draft: false
 tags: ["Agent", "Gemini", "Claude", "Vertex AI"]
+categories: ["个人助理智能体"]
 description: "一篇 2026 年重写的 Agent 架构实战笔记：从模型选择、Vertex AI 部署、工具层、记忆层到上线清单，梳理一个可运行 AI Agent 的基本工程结构。"
 lastmod: 2026-06-30
 aliases: ["/posts/from-zero-to-one-gemini-claude-agent-vertex-ai"]

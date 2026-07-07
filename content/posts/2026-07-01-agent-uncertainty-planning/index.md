@@ -4,7 +4,7 @@ date: 2026-07-01
 publishDate: 2026-07-01
 description: "深入分析 AI 智能体面对不确定性时的规划困境——环境动态性、信息不完备性与认知局限的三重挑战，以及反应式规划、信息采集优先、元认知等应对策略"
 tags: ["AI-Agent", "Planning", "Uncertainty", "Decision-Making"]
-categories: ["AI"]
+categories: ["AI", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-uncertainty-planning"]
 ---

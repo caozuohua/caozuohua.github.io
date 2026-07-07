@@ -4,7 +4,7 @@ date: 2026-06-29
 publishDate: 2026-06-29
 description: "从 luck-agent 到 Hermes-lite，我花了两年时间才想清楚这个问题：80% 的请求不需要'思考'，只需要'路由'。"
 tags: ["Agent", "Skill", "Architecture", "LLM", "Hermes"]
-categories: ["AI Agent"]
+categories: ["AI Agent", "个人助理智能体"]
 draft: false
 aliases: ["/posts/skill-routing-vs-react"]
 ---

@@ -4,7 +4,7 @@ date: 2026-07-01
 publishDate: 2026-07-01
 description: "深入分析多智能体协作的三大架构模式，以及信息孤岛、级联失败、责任归属不清等协调问题的根因与解法"
 tags: ["AI-Agent", "Multi-Agent", "Orchestration", "LLM"]
-categories: ["AI"]
+categories: ["AI", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-multi-agent-coordination"]
 ---

@@ -4,7 +4,7 @@ date: 2026-07-01
 publishDate: 2026-07-01
 description: "深入分析 AI 智能体长链路任务中途崩溃的根因——缺乏持久化状态、断点续行能力缺失、以及为什么可靠性是基础设施问题而非模型问题"
 tags: ["AI-Agent", "Reliability", "Workflow", "Durability"]
-categories: ["AI"]
+categories: ["AI", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-reliability-crash"]
 ---

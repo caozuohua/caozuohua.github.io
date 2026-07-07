@@ -3,6 +3,7 @@ title: "Agent 日记系列（三）：揭秘 Agent 的自我进化：动态工�
 date: 2024-04-12T00:31:35+08:00
 draft: false
 tags: ["Agent", "Self-evolution", "Tool Creation"]
+categories: ["个人助理智能体"]
 description: "讨论 Agent 何时需要动态创建工具、如何生成与注册工具、如何做安全审查，以及为什么工具组合通常比盲目造新工具更可控。"
 lastmod: 2026-06-30
 aliases: ["/posts/agent-diary-series-3-self-evolution-dynamic-tools"]

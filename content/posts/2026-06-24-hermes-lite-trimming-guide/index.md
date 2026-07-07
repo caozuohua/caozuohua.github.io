@@ -3,6 +3,7 @@ title: "Hermes-lite 裁剪指南：在 1GB VPS 上跑轻量 AI Agent"
 date: 2026-06-24T23:58:52Z
 draft: false
 tags: ["Hermes", "AI Agent", "GCP", "轻量化", "LLM", "系统运维"]
+categories: ["个人助理智能体"]
 description: "从 Codex 到大 VPS 再到 e2-micro，三阶段渐进式裁剪 Hermes Agent 的完整历程。涵盖多机协作裁剪策略、非必要部件与技能剪枝、低资源韧性优化、踩坑经验。"
 aliases:
   - /posts/2026-06-24-hermes-lite-trimming-guide/

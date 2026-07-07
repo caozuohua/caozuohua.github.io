@@ -4,7 +4,7 @@ date: 2026-06-29
 publishDate: 2026-06-29
 description: "试过 Obsidian 的标签体系、Notion 的数据库、Logseq 的 graph view，最后发现：知识库的最大敌人不是容量，是维护摩擦。"
 tags: ["QPC", "Knowledge", "PKB", "Productivity", "Minimalism"]
-categories: ["方法论"]
+categories: ["方法论", "个人助理智能体"]
 draft: false
 aliases: ["/posts/qpc-minimal-knowledge-base"]
 ---

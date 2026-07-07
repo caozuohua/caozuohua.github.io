@@ -4,6 +4,7 @@ date: 2026-07-03
 draft: false
 description: "本金100w / 目标年化≥5% / 最大回撤≤10% / 每半年再平衡 / 红利低波ETF定投"
 tags: ["fund", "portfolio", "personal-finance"]
+categories: ["稳健理财工具"]
 ---
 
 <style>

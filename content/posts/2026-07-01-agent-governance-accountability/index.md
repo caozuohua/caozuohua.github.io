@@ -4,7 +4,7 @@ date: 2026-07-01
 publishDate: 2026-07-01
 description: "深入分析 AI 智能体自主行动带来的治理空白——权限边界、审计追踪、数据隐私和责任归属四大挑战，以及最小权限、决策审计日志、人机协作等治理框架"
 tags: ["AI-Agent", "Governance", "Accountability", "AI-Safety"]
-categories: ["AI"]
+categories: ["AI", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-governance-accountability"]
 ---

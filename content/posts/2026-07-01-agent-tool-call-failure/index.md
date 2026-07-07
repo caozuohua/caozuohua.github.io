@@ -4,7 +4,7 @@ date: 2026-07-01
 publishDate: 2026-07-01
 description: "深入分析 AI 智能体工具调用失败的三大模式——静默错误、参数构造错误和无限循环重试，以及类型约束、超时熔断、幂等设计等工程对策"
 tags: ["AI-Agent", "Tool-Use", "Function-Calling", "LLM"]
-categories: ["AI"]
+categories: ["AI", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-tool-call-failure"]
 ---

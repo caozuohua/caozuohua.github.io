@@ -4,7 +4,7 @@ date: 2026-06-28
 publishDate: 2026-06-28
 description: "一篇源码级拆解：Agent 的记忆系统怎么同时做到持久化、低成本、不丢上下文？Hermes-Lite 用 5 层架构给出了一个答案。"
 tags: ["Agent", "Memory", "Hermes-Lite", "LLM", "Architecture"]
-categories: ["Agent"]
+categories: ["Agent", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-memory-5-layer-architecture"]
 ---

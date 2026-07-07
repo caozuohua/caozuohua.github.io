@@ -3,6 +3,7 @@ title: "Agent 日记系列（四）：构建 Agent 的记忆宫殿：持久化�
 date: 2024-04-20T00:31:50+08:00
 draft: false
 tags: ["Agent", "Memory", "Turso", "Database"]
+categories: ["个人助理智能体"]
 description: "从身份记忆、经验记忆和会话上下文三层出发，比较文本文件、SQLite、Turso/libSQL 与 Redis 在个人 Agent 记忆系统中的取舍。"
 lastmod: 2026-06-30
 aliases: ["/posts/agent-diary-series-4-memory-persistence"]

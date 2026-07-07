@@ -3,6 +3,7 @@ title: "Agent 日记系列（一）：AI 助手协作痛点与进化实践"
 date: 2026-05-06T00:32:00+08:00
 draft: false
 tags: ["Agent", "Pain Points", "Evolution"]
+categories: ["个人助理智能体"]
 description: "总结复杂任务中 AI 助手的工具编排、跨会话记忆和单 Agent 能力边界问题，并提出动态工具、持久记忆和多 Agent 协作三条演进方向。"
 lastmod: 2026-06-30
 aliases: ["/posts/agent-diary-series-1"]

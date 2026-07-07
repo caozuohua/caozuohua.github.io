@@ -4,7 +4,7 @@ date: 2026-06-25
 publishDate: 2026-06-25
 description: "从完整版 Hermes Agent 裁剪到 Hermes-lite 过程中遇到的 7 类踩坑经验：路径迁移、技能裁剪、工具裁剪、模型 fallback、直连 provider、记忆容量、长会话。"
 tags: ["hermes", "轻量化", "troubleshooting", "ai-agent", "架构"]
-categories: ["技术复盘"]
+categories: ["技术复盘", "个人助理智能体"]
 draft: false
 aliases: ["/posts/hermes-lite-pitfalls-deep-dive/"]
 ---

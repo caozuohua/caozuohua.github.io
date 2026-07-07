@@ -4,7 +4,7 @@ date: 2026-07-01
 publishDate: 2026-07-01
 description: "深入分析 AI 智能体最突出的幻觉问题：单步小错如何通过多步推理累加成系统性偏移，以及 RAG、结构化输出、分步验证等实用对策"
 tags: ["AI-Agent", "Hallucination", "RAG", "LLM"]
-categories: ["AI"]
+categories: ["AI", "个人助理智能体"]
 draft: false
 aliases: ["/posts/agent-hallucination-deep-dive"]
 ---
