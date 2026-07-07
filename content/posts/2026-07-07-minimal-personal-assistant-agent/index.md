@@ -29,24 +29,86 @@ draft: false
 
 ### 架构与记忆
 
+- [为什么个人助理智能体要精简](/posts/2026-07-07-why-personal-agent-should-be-minimal/)
+- [个人助理智能体的最小可用架构](/posts/2026-07-07-minimal-personal-agent-architecture/)
 - [Agent 日记系列（一）：AI 助手协作痛点与进化实践](/posts/2026-05-06-agent-diary-series-1/)
 - [Agent 日记系列（二）：探秘 Agent 的大脑中枢：主控制器与生命周期](/posts/2024-04-05-agent-diary-series-2-controller-lifecycle/)
 - [Agent 日记系列（三）：揭秘 Agent 的自我进化：动态工具创建与管理](/posts/2024-04-12-agent-diary-series-3-self-evolution-dynamic-tools/)
 - [Agent 日记系列（四）：构建 Agent 的记忆宫殿：持久化存储系统解析](/posts/2024-04-20-agent-diary-series-4-memory-persistence/)
+- [个人助理需要记住什么，不需要记住什么](/posts/2026-07-07-what-personal-agent-should-remember/)
 - [Agent 的记忆：Hermes-Lite 如何用 5 层结构解决「鱼的难题」](/posts/2026-07-01-agent-memory-5-layer-architecture/)
 
 ### Hermes-lite 与部署
 
 - [Hermes-lite 裁剪指南：在 1GB VPS 上跑轻量 AI Agent](/posts/2026-06-24-hermes-lite-trimming-guide/)
 - [Hermes-lite 裁剪实战：7 类典型坑与解法](/posts/2026-06-25-hermes-lite-pitfalls-deep-dive/)
+- [1GB VPS 上跑个人助理智能体的部署清单](/posts/2026-07-07-one-gb-vps-agent-deployment-checklist/)
 - [VPS 安全加固：从 0 到三层防御实战记录](/posts/2026-06-29-vps-security-hardening/)
 
 ### 知识库与路由
 
 - [QPC 极简设计：我用 4 个字段管理 200 条知识](/posts/2026-06-29-qpc-minimal-knowledge-base/)
 - [Agent 系列日记 5：为什么 Skill 路由比 ReAct 控制器更适合个人助理](/posts/2026-06-29-skill-routing-vs-react/)
+- [Skill 路由如何降低个人助理的不确定性](/posts/2026-07-07-skill-routing-reduces-agent-uncertainty/)
 
 ### 可靠性专题
+
+- [智能体问题：幻觉与事实错误](/posts/2026-07-01-agent-hallucination-deep-dive/)
+- [智能体问题：工具调用失败](/posts/2026-07-01-agent-tool-call-failure/)
+- [工具调用失败时，Agent 应该怎样降级](/posts/2026-07-07-agent-tool-failure-degradation/)
+- [智能体问题：可靠性与中途崩溃](/posts/2026-07-01-agent-reliability-crash/)
+- [智能体问题：多 Agent 协调](/posts/2026-07-01-agent-multi-agent-coordination/)
+- [智能体问题：治理与问责](/posts/2026-07-01-agent-governance-accountability/)
+- [智能体问题：不确定性与规划失效](/posts/2026-07-01-agent-uncertainty-planning/)
+- [个人助理智能体的权限边界和确认机制](/posts/2026-07-07-personal-agent-permission-boundaries/)
+- [日志、备份和升级：长期运行的维护手册](/posts/2026-07-07-agent-logs-backups-upgrades-maintenance/)
+
+## 建议阅读框架
+
+### 1. 最小架构
+
+先回答个人助理需要哪些最小组件：入口、模型路由、技能路由、工具层、记忆层、日志和人工确认。
+
+已发布文章：
+
+- [为什么个人助理智能体要精简](/posts/2026-07-07-why-personal-agent-should-be-minimal/)
+- [个人助理智能体的最小可用架构](/posts/2026-07-07-minimal-personal-agent-architecture/)
+
+### 2. 记忆和知识库
+
+个人助理的关键不是“无限记忆”，而是把偏好、事实、任务状态和可检索知识分层管理。
+
+已发布文章：
+
+- [个人助理需要记住什么，不需要记住什么](/posts/2026-07-07-what-personal-agent-should-remember/)
+- [QPC 极简设计：我用 4 个字段管理 200 条知识](/posts/2026-06-29-qpc-minimal-knowledge-base/)
+- [Agent 的记忆：Hermes-Lite 如何用 5 层结构解决「鱼的难题」](/posts/2026-07-01-agent-memory-5-layer-architecture/)
+
+### 3. Skill 路由和工具调用
+
+个人助理的多数任务有明确场景，Skill 路由比无约束循环更容易稳定。
+
+已发布文章：
+
+- [Skill 路由如何降低个人助理的不确定性](/posts/2026-07-07-skill-routing-reduces-agent-uncertainty/)
+- [工具调用失败时，Agent 应该怎样降级](/posts/2026-07-07-agent-tool-failure-degradation/)
+- [个人助理智能体的权限边界和确认机制](/posts/2026-07-07-personal-agent-permission-boundaries/)
+
+### 4. 部署、安全和运维
+
+精简不是少做安全，而是减少暴露面、减少常驻组件、减少不可观测状态。
+
+已发布文章：
+
+- [1GB VPS 上跑个人助理智能体的部署清单](/posts/2026-07-07-one-gb-vps-agent-deployment-checklist/)
+- [VPS 安全加固：从 0 到三层防御实战记录](/posts/2026-06-29-vps-security-hardening/)
+- [日志、备份和升级：长期运行的维护手册](/posts/2026-07-07-agent-logs-backups-upgrades-maintenance/)
+
+### 5. 可靠性和治理
+
+个人助理的真实挑战，是失败时能否被发现、解释、恢复和追责。
+
+已发布文章：
 
 - [智能体问题：幻觉与事实错误](/posts/2026-07-01-agent-hallucination-deep-dive/)
 - [智能体问题：工具调用失败](/posts/2026-07-01-agent-tool-call-failure/)
@@ -55,66 +117,14 @@ draft: false
 - [智能体问题：治理与问责](/posts/2026-07-01-agent-governance-accountability/)
 - [智能体问题：不确定性与规划失效](/posts/2026-07-01-agent-uncertainty-planning/)
 
-## 建议阅读框架
-
-### 1. 最小架构
-
-先回答个人助理需要哪些最小组件：入口、模型路由、技能路由、工具层、记忆层、日志和人工确认。
-
-计划文章：
-
-- 《为什么个人助理智能体要精简》
-- 《个人助理智能体的最小可用架构》
-- 《哪些能力应该内置，哪些应该交给工具》
-
-### 2. 记忆和知识库
-
-个人助理的关键不是“无限记忆”，而是把偏好、事实、任务状态和可检索知识分层管理。
-
-计划文章：
-
-- 《个人助理需要记住什么，不需要记住什么》
-- 《QPC 四字段如何支撑个人知识管理》
-- 《记忆系统的五层结构：从上下文到长期偏好》
-
-### 3. Skill 路由和工具调用
-
-个人助理的多数任务有明确场景，Skill 路由比无约束循环更容易稳定。
-
-计划文章：
-
-- 《Skill 路由如何降低个人助理的不确定性》
-- 《工具调用失败时，Agent 应该怎样降级》
-- 《高风险工具的权限边界和确认机制》
-
-### 4. 部署、安全和运维
-
-精简不是少做安全，而是减少暴露面、减少常驻组件、减少不可观测状态。
-
-计划文章：
-
-- 《1GB VPS 上跑个人助理智能体的部署清单》
-- 《个人助理智能体的密钥、面板和网关安全》
-- 《日志、备份和升级：长期运行的维护手册》
-
-### 5. 可靠性和治理
-
-个人助理的真实挑战，是失败时能否被发现、解释、恢复和追责。
-
-计划文章：
-
-- 《个人助理智能体的失败分类表》
-- 《什么时候需要多 Agent，什么时候不需要》
-- 《从幻觉到问责：个人助理的可靠性边界》
-
 ## TODO
 
-- [ ] 把现有 Agent、Hermes-lite、QPC、可靠性文章统一纳入本系列。
-- [ ] 新增一篇“最小可用个人助理架构图”文章。
-- [ ] 新增一篇“从零搭建精简个人助理智能体”的实操总教程。
-- [ ] 把 6 篇“智能体问题”文章整理为可靠性专题入口。
-- [ ] 补一篇维护手册：升级、备份、日志、故障排查、安全检查。
-- [ ] 明确每个工具的权限等级：只读、建议、可执行、需确认。
+- [x] 把现有 Agent、Hermes-lite、QPC、可靠性文章统一纳入本系列。
+- [x] 新增一篇“最小可用个人助理架构图”文章。
+- [x] 新增一篇“从零搭建精简个人助理智能体”的架构入口文章。
+- [x] 把 6 篇“智能体问题”文章整理为可靠性专题入口。
+- [x] 补一篇维护手册：升级、备份、日志、故障排查、安全检查。
+- [x] 明确每个工具的权限等级：只读、建议、可执行、需确认。
 
 ## 写作边界
 
