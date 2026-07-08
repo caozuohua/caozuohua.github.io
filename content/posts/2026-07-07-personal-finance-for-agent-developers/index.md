@@ -26,12 +26,20 @@ draft: false
 
 - [为什么智能体开发者需要自己的稳健理财系统](/posts/2026-07-07-why-agent-devs-need-finance-system/)
 - [收益、回撤、波动率和流动性：四个最容易混淆的概念](/posts/2026-07-07-risk-return-drawdown-liquidity/)
+- [从年化收益到能睡着觉的资产配置目标](/posts/2026-07-07-sleep-well-asset-allocation-goal/)
 - [稳健组合里的每类资产到底负责什么](/posts/2026-07-07-asset-roles-in-stable-portfolio/)
 - [基金筛选清单：从收益率退后一步](/posts/2026-07-07-fund-screening-checklist/)
+- [债基、二级债、红利低波 ETF 的常见误区](/posts/2026-07-07-bond-fund-dividend-low-vol-misunderstandings/)
+- [如何识别一个组合是不是假稳健](/posts/2026-07-07-fake-stable-portfolio-signals/)
+- [什么时候该持有现金，什么时候该承担波动](/posts/2026-07-07-cash-vs-risk-assets/)
 - [10w、50w、100w 三档资金的配置思路](/posts/2026-07-07-allocation-for-10w-50w-100w/)
 - [再平衡规则：什么时候调仓，什么时候不动](/posts/2026-07-07-rebalancing-rules/)
+- [月度复盘模板：只看少数关键指标](/posts/2026-07-07-monthly-portfolio-review-template/)
+- [极端行情预案：下跌时按什么规则行动](/posts/2026-07-07-market-crash-action-plan/)
 - [让 Agent 帮你读公告、整理持仓和生成复盘](/posts/2026-07-07-agent-assisted-portfolio-review/)
 - [100w 稳健型基金组合 · 执行手册](/posts/fund-portfolio-analyzer/)
+- [用表格管理个人基金组合的最小字段](/posts/2026-07-07-minimal-portfolio-spreadsheet-fields/)
+- [个人理财工具的权限边界：什么能自动化，什么必须人工确认](/posts/2026-07-07-personal-finance-tool-permission-boundary/)
 - [个人稳健理财工具维护手册](/posts/2026-07-07-personal-finance-tool-maintenance/)
 
 其中《100w 稳健型基金组合 · 执行手册》可以看作系列里的实战样例：给定资金规模、收益目标和回撤约束之后，如何拆成具体配置、执行日历和再平衡规则。
@@ -46,6 +54,7 @@ draft: false
 
 - [为什么智能体开发者需要自己的稳健理财系统](/posts/2026-07-07-why-agent-devs-need-finance-system/)
 - [收益、回撤、波动率和流动性：四个最容易混淆的概念](/posts/2026-07-07-risk-return-drawdown-liquidity/)
+- [从年化收益到能睡着觉的资产配置目标](/posts/2026-07-07-sleep-well-asset-allocation-goal/)
 
 ### 2. 配置篇：把钱分到不同篮子里
 
@@ -54,6 +63,7 @@ draft: false
 已发布文章：
 
 - [稳健组合里的每类资产到底负责什么](/posts/2026-07-07-asset-roles-in-stable-portfolio/)
+- [什么时候该持有现金，什么时候该承担波动](/posts/2026-07-07-cash-vs-risk-assets/)
 - [10w、50w、100w 三档资金的配置思路](/posts/2026-07-07-allocation-for-10w-50w-100w/)
 
 ### 3. 筛选篇：看懂基金，而不是追逐排行榜
@@ -63,6 +73,8 @@ draft: false
 已发布文章：
 
 - [基金筛选清单：从收益率退后一步](/posts/2026-07-07-fund-screening-checklist/)
+- [债基、二级债、红利低波 ETF 的常见误区](/posts/2026-07-07-bond-fund-dividend-low-vol-misunderstandings/)
+- [如何识别一个组合是不是假稳健](/posts/2026-07-07-fake-stable-portfolio-signals/)
 
 ### 4. 执行篇：把计划变成流程
 
@@ -71,6 +83,8 @@ draft: false
 已发布文章：
 
 - [再平衡规则：什么时候调仓，什么时候不动](/posts/2026-07-07-rebalancing-rules/)
+- [月度复盘模板：只看少数关键指标](/posts/2026-07-07-monthly-portfolio-review-template/)
+- [极端行情预案：下跌时按什么规则行动](/posts/2026-07-07-market-crash-action-plan/)
 - [100w 稳健型基金组合 · 执行手册](/posts/fund-portfolio-analyzer/)
 
 ### 5. 工具篇：让 Agent 做辅助工作
@@ -80,6 +94,8 @@ AI Agent 更适合做信息整理、提醒、归因和复盘，不适合做无�
 已发布文章：
 
 - [让 Agent 帮你读公告、整理持仓和生成复盘](/posts/2026-07-07-agent-assisted-portfolio-review/)
+- [用表格管理个人基金组合的最小字段](/posts/2026-07-07-minimal-portfolio-spreadsheet-fields/)
+- [个人理财工具的权限边界：什么能自动化，什么必须人工确认](/posts/2026-07-07-personal-finance-tool-permission-boundary/)
 - [个人稳健理财工具维护手册](/posts/2026-07-07-personal-finance-tool-maintenance/)
 
 ## TODO

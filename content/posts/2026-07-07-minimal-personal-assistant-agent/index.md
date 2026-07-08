@@ -31,11 +31,14 @@ draft: false
 
 - [为什么个人助理智能体要精简](/posts/2026-07-07-why-personal-agent-should-be-minimal/)
 - [个人助理智能体的最小可用架构](/posts/2026-07-07-minimal-personal-agent-architecture/)
+- [哪些能力应该内置，哪些应该交给工具](/posts/2026-07-07-built-in-vs-tool-capabilities/)
 - [Agent 日记系列（一）：AI 助手协作痛点与进化实践](/posts/2026-05-06-agent-diary-series-1/)
 - [Agent 日记系列（二）：探秘 Agent 的大脑中枢：主控制器与生命周期](/posts/2024-04-05-agent-diary-series-2-controller-lifecycle/)
 - [Agent 日记系列（三）：揭秘 Agent 的自我进化：动态工具创建与管理](/posts/2024-04-12-agent-diary-series-3-self-evolution-dynamic-tools/)
 - [Agent 日记系列（四）：构建 Agent 的记忆宫殿：持久化存储系统解析](/posts/2024-04-20-agent-diary-series-4-memory-persistence/)
 - [个人助理需要记住什么，不需要记住什么](/posts/2026-07-07-what-personal-agent-should-remember/)
+- [QPC 四字段如何支撑个人知识管理](/posts/2026-07-07-qpc-four-fields-for-personal-agent/)
+- [记忆系统的五层结构：从上下文到长期偏好](/posts/2026-07-07-five-layer-memory-from-context-to-preference/)
 - [Agent 的记忆：Hermes-Lite 如何用 5 层结构解决「鱼的难题」](/posts/2026-07-01-agent-memory-5-layer-architecture/)
 
 ### Hermes-lite 与部署
@@ -43,6 +46,7 @@ draft: false
 - [Hermes-lite 裁剪指南：在 1GB VPS 上跑轻量 AI Agent](/posts/2026-06-24-hermes-lite-trimming-guide/)
 - [Hermes-lite 裁剪实战：7 类典型坑与解法](/posts/2026-06-25-hermes-lite-pitfalls-deep-dive/)
 - [1GB VPS 上跑个人助理智能体的部署清单](/posts/2026-07-07-one-gb-vps-agent-deployment-checklist/)
+- [个人助理智能体的密钥、面板和网关安全](/posts/2026-07-07-agent-secrets-panels-gateways-security/)
 - [VPS 安全加固：从 0 到三层防御实战记录](/posts/2026-06-29-vps-security-hardening/)
 
 ### 知识库与路由
@@ -50,6 +54,7 @@ draft: false
 - [QPC 极简设计：我用 4 个字段管理 200 条知识](/posts/2026-06-29-qpc-minimal-knowledge-base/)
 - [Agent 系列日记 5：为什么 Skill 路由比 ReAct 控制器更适合个人助理](/posts/2026-06-29-skill-routing-vs-react/)
 - [Skill 路由如何降低个人助理的不确定性](/posts/2026-07-07-skill-routing-reduces-agent-uncertainty/)
+- [高风险工具的权限边界和确认机制](/posts/2026-07-07-high-risk-tool-confirmation-mechanism/)
 
 ### 可靠性专题
 
@@ -60,6 +65,9 @@ draft: false
 - [智能体问题：多 Agent 协调](/posts/2026-07-01-agent-multi-agent-coordination/)
 - [智能体问题：治理与问责](/posts/2026-07-01-agent-governance-accountability/)
 - [智能体问题：不确定性与规划失效](/posts/2026-07-01-agent-uncertainty-planning/)
+- [个人助理智能体的失败分类表](/posts/2026-07-07-personal-agent-failure-taxonomy/)
+- [什么时候需要多 Agent，什么时候不需要](/posts/2026-07-07-when-multi-agent-is-needed/)
+- [从幻觉到问责：个人助理的可靠性边界](/posts/2026-07-07-from-hallucination-to-accountability/)
 - [个人助理智能体的权限边界和确认机制](/posts/2026-07-07-personal-agent-permission-boundaries/)
 - [日志、备份和升级：长期运行的维护手册](/posts/2026-07-07-agent-logs-backups-upgrades-maintenance/)
 
@@ -73,6 +81,7 @@ draft: false
 
 - [为什么个人助理智能体要精简](/posts/2026-07-07-why-personal-agent-should-be-minimal/)
 - [个人助理智能体的最小可用架构](/posts/2026-07-07-minimal-personal-agent-architecture/)
+- [哪些能力应该内置，哪些应该交给工具](/posts/2026-07-07-built-in-vs-tool-capabilities/)
 
 ### 2. 记忆和知识库
 
@@ -81,6 +90,8 @@ draft: false
 已发布文章：
 
 - [个人助理需要记住什么，不需要记住什么](/posts/2026-07-07-what-personal-agent-should-remember/)
+- [QPC 四字段如何支撑个人知识管理](/posts/2026-07-07-qpc-four-fields-for-personal-agent/)
+- [记忆系统的五层结构：从上下文到长期偏好](/posts/2026-07-07-five-layer-memory-from-context-to-preference/)
 - [QPC 极简设计：我用 4 个字段管理 200 条知识](/posts/2026-06-29-qpc-minimal-knowledge-base/)
 - [Agent 的记忆：Hermes-Lite 如何用 5 层结构解决「鱼的难题」](/posts/2026-07-01-agent-memory-5-layer-architecture/)
 
@@ -92,6 +103,7 @@ draft: false
 
 - [Skill 路由如何降低个人助理的不确定性](/posts/2026-07-07-skill-routing-reduces-agent-uncertainty/)
 - [工具调用失败时，Agent 应该怎样降级](/posts/2026-07-07-agent-tool-failure-degradation/)
+- [高风险工具的权限边界和确认机制](/posts/2026-07-07-high-risk-tool-confirmation-mechanism/)
 - [个人助理智能体的权限边界和确认机制](/posts/2026-07-07-personal-agent-permission-boundaries/)
 
 ### 4. 部署、安全和运维
@@ -101,6 +113,7 @@ draft: false
 已发布文章：
 
 - [1GB VPS 上跑个人助理智能体的部署清单](/posts/2026-07-07-one-gb-vps-agent-deployment-checklist/)
+- [个人助理智能体的密钥、面板和网关安全](/posts/2026-07-07-agent-secrets-panels-gateways-security/)
 - [VPS 安全加固：从 0 到三层防御实战记录](/posts/2026-06-29-vps-security-hardening/)
 - [日志、备份和升级：长期运行的维护手册](/posts/2026-07-07-agent-logs-backups-upgrades-maintenance/)
 
@@ -116,6 +129,9 @@ draft: false
 - [智能体问题：多 Agent 协调](/posts/2026-07-01-agent-multi-agent-coordination/)
 - [智能体问题：治理与问责](/posts/2026-07-01-agent-governance-accountability/)
 - [智能体问题：不确定性与规划失效](/posts/2026-07-01-agent-uncertainty-planning/)
+- [个人助理智能体的失败分类表](/posts/2026-07-07-personal-agent-failure-taxonomy/)
+- [什么时候需要多 Agent，什么时候不需要](/posts/2026-07-07-when-multi-agent-is-needed/)
+- [从幻觉到问责：个人助理的可靠性边界](/posts/2026-07-07-from-hallucination-to-accountability/)
 
 ## TODO
 
