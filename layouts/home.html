@@ -1,11 +1,16 @@
 {{ define "header" }}
   <header class="home-hero">
     <div class="home-hero-inner">
-      <p class="home-kicker">Personal notes on technology and systems</p>
-      <h1>{{ .Site.Title }}</h1>
+      <p class="home-kicker">Engineering notes</p>
+      <h1>技术与系统笔记</h1>
     {{ with .Site.Params.description }}
         <p>{{ . }}</p>
     {{ end }}
+      <nav class="home-topic-links" aria-label="浏览文章主题">
+        <a href="/tags/">主题索引</a>
+        <a href="/categories/">系列文章</a>
+        <a href="/posts/">全部文章</a>
+      </nav>
     </div>
   </header>
 {{ end }}

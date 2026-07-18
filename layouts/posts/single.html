@@ -47,6 +47,7 @@
               <span>· {{ lang.Translate "readingTime" .ReadingTime }}</span>
               <span>· {{ .WordCount }} 字</span>
             {{ end }}
+            {{ with .Params.categories }}<span>· 系列：{{ delimit . " / " }}</span>{{ end }}
           </div>
         </header>
 

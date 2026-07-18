@@ -80,7 +80,7 @@
     font-weight: 700;
     color: var(--color-text);
     text-decoration: none;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
   .top-nav-logo:hover {
@@ -149,7 +149,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
     color: var(--color-text-muted);
     margin-bottom: 1rem;
     padding-left: 0.5rem;
@@ -271,7 +271,7 @@
     margin: 1.5em 0;
     padding: 1em 1.5em;
     border-left: 4px solid var(--color-blockquote-border);
-    background: linear-gradient(135deg, #f8f7ff 0%, #f0f0ff 100%);
+    background: #f3f5f8;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     color: var(--color-text-secondary);
     font-style: italic;
@@ -357,7 +357,7 @@
   hr {
     border: none;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    background: var(--color-border);
     margin: 2.5em 0;
   }
 
@@ -588,7 +588,7 @@
     top: var(--nav-height);
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    background: var(--color-primary);
     z-index: 1001;
     transition: width 0.1s;
     border-radius: 0 2px 2px 0;
@@ -597,9 +597,9 @@
   /* ========== Home Page ========== */
   .home-hero {
     margin-top: var(--nav-height);
-    background:
-      linear-gradient(135deg, rgba(26, 26, 46, 0.96) 0%, rgba(49, 46, 129, 0.92) 48%, rgba(30, 64, 175, 0.9) 100%);
-    padding: 4rem 2rem 4.5rem;
+    background: #171a1f;
+    border-bottom: 4px solid #3b82f6;
+    padding: 2.75rem 2rem 3rem;
   }
 
   .home-hero-inner {
@@ -612,7 +612,7 @@
     color: rgba(255,255,255,0.68);
     font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
 
@@ -620,8 +620,8 @@
     margin: 0 0 0.8rem;
     color: #fff;
     font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 6vw, 4.6rem);
-    line-height: 1;
+    font-size: 3rem;
+    line-height: 1.15;
   }
 
   .home-hero p:last-child {
@@ -630,6 +630,22 @@
     color: rgba(255,255,255,0.82);
     font-size: 1.05rem;
   }
+
+  .home-topic-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .home-topic-links a {
+    color: rgba(255,255,255,0.82);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .home-topic-links a:hover { color: #fff; }
 
   .home-container {
     max-width: 1180px;
@@ -671,7 +687,7 @@
     color: var(--color-text-muted);
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
 
@@ -753,8 +769,10 @@
 
   @media (max-width: 960px) {
     .home-hero {
-      padding: 3rem 1.25rem 3.25rem;
+      padding: 2.25rem 1.25rem 2.5rem;
     }
+
+    .home-hero h1 { font-size: 2.1rem; }
 
     .home-container {
       padding: 2rem 1.25rem 3rem;

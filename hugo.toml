@@ -7,7 +7,7 @@ theme = 'ananke'
   pagerSize = 10
 
 [params]
-  description = '分享技术、思考与生活'
+  description = '记录 AI Agent、自动化与系统工程中的具体问题、失败和判断'
   author = 'Cao Zuohua'
   show_reading_time = true
 
@@ -20,6 +20,14 @@ theme = 'ananke'
   name = 'Posts'
   url = '/posts/'
   weight = 20
+
+[[menu.main]]
+  name = 'Portal'
+  url = 'https://caozuohua.github.io/portal/'
+  weight = 30
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
 
 [params.ananke]
   show_recent_posts = true
