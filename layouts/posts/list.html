@@ -1,0 +1,60 @@
+{{ define "header" }}
+  {{/* Archive header */}}
+  <header style="background: linear-gradient(135deg, #1a1a2e 0%, #312e81 50%, #1e40af 100%); padding: 2rem 2rem 3rem; text-align: center;">
+    <h1 style="color: white; font-size: 2rem; margin: 0; font-weight: 700; font-family: var(--font-serif);">所有文章</h1>
+  </header>
+{{ end }}
+
+{{ define "main" }}
+  <div style="max-width: var(--content-max-width); margin: 0 auto; padding: 2rem 3rem;">
+    {{ with .Content }}
+      <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }}">
+        {{ .Content }}
+      </article>
+    {{ end }}
+
+    <section class="w-100">
+      <h1 style="font-size: 1.5rem; margin-bottom: 1.5rem; margin-top: 1rem;">全部文章</h1>
+      
+      <ul class="post-list">
+        {{ range .Paginator.Pages }}
+          <li class="post-list-item">
+            <div class="post-meta">
+              <time>{{ .Date | time.Format "2006年1月2日" }}</time>
+              {{ if .ReadingTime }}
+                <span>· {{ .ReadingTime }} 分钟阅读</span>
+              {{ end }}
+            </div>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p class="post-summary">{{ .Summary | truncate 150 }}</p>
+          </li>
+        {{ end }}
+      </ul>
+    </section>
+
+    {{/* Pagination */}}
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav style="margin-top: 2rem;">
+      <ul class="pagination">
+        {{ if .Paginator.HasPrev }}
+          <li><a href="{{ .Paginator.Prev.URL }}">←</a></li>
+        {{ end }}
+        {{ range .Paginator.Pagers }}
+          {{ if eq . $.Paginator }}
+            <li class="active"><span>{{ .PageNumber }}</span></li>
+          {{ else }}
+            <li><a href="{{ .URL }}">{{ .PageNumber }}</a></li>
+          {{ end }}
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+          <li><a href="{{ .Paginator.Next.URL }}">→</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+    {{ end }}
+
+    <footer class="site-footer" style="margin-left: 0;">
+      <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.</p>
+    </footer>
+  </div>
+{{ end }}
