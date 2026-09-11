@@ -16,3 +16,6 @@ Thumbs.db
 
 # 本地配置（如果不想共享）
 .hugo_env
+
+# WorkBuddy 项目数据（记忆等，不发布）
+.workbuddy/
