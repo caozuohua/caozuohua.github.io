@@ -1,7 +1,7 @@
 ---
 title: "别把 2B 当小号 GPT-4：llama.cpp + Qwen 2B 的六种实战玩法"
-date: 2026-09-13T21:50:00+08:00
-publishDate: 2026-09-13T21:50:00+08:00
+date: 2026-09-13T12:00:00+08:00
+publishDate: 2026-09-13T12:00:00+08:00
 description: "从 GBNF 语法约束解码、流水线路由、上下文压缩、离线批处理，到投机解码与 LoRA 热插拔，系统梳理本地 llama.cpp + Qwen 2B 这类小模型的真实用武之地，并划清它的能力红线。"
 tags: ["llama.cpp", "Qwen", "小模型", "本地部署", "推理优化", "GBNF"]
 categories: ["技术分享"]
