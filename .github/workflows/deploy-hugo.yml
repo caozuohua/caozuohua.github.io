@@ -27,10 +27,20 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          # 锁定具体版本，不用 'latest'。
+          # 浮动版本会让 Hugo 的默认值 / minify 行为 / CLI 参数在两次构建之间静默漂移，
+          # 制造「昨天还好今天就坏」——本仓库已被同类问题咬过（投机解码参数改名等）。
+          hugo-version: '0.166.0'
           extended: true
       - name: Build Hugo site
-        run: hugo --minify
+        # --printPathWarnings：两个页面写入同一路径时报警（最常见的静默错误）
+        # --panicOnWarning  ：任一 WARNING 即让构建失败，杜绝「告警被忽略后进生产」
+        run: hugo --minify --printPathWarnings --panicOnWarning
+      - name: Assert published articles produced artifacts
+        # 把「CI 绿色但线上 404」的静默失败变成 CI 红灯。
+        # 语义：生效日期已到的文章必须产出 public/posts/<slug>/index.html；
+        # 未到生效时间的按设计跳过，不算失败。
+        run: python3 .github/scripts/check-published-artifacts.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

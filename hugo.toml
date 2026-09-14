@@ -1,7 +1,14 @@
 baseURL = 'https://caozuohua.github.io/'
-languageCode = 'zh-cn'
+locale = 'zh-cn'
 title = 'CAO ZUOHUA'
 theme = 'ananke'
+
+# 放行 Markdown 中的原始 HTML。
+# 本站部分文章（如 fund-portfolio-analyzer）用内联 <style> + <div> 卡片排版，
+# goldmark 默认 unsafe=false 会静默丢弃这些 HTML——不报错，只发一条 "Raw HTML omitted"
+# 告警，而线上内容直接消失。设为 true 才能正常渲染。
+[markup.goldmark.renderer]
+  unsafe = true
 
 [pagination]
   pagerSize = 10
