@@ -165,15 +165,28 @@ ws      ::= [ \t\n]*
 ./llama-server \
   -m models/Qwen2.5-32B-Instruct-Q4_K_M.gguf \
   -md models/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf \
-  --draft-max 8 --draft-min 2 --draft-p-min 0.7 \
-  -c 8192 -ngl 99
+  --spec-type draft-simple \
+  --spec-draft-n-max 8 --spec-draft-n-min 2 --spec-draft-p-min 0.7 \
+  -c 8192 -ngl 99 -ngld 99
 ```
 
-其中 `-md`（`--model-draft`）指定草稿模型，`--draft-max` 控制单轮最多猜多少 token。
+其中 `-md`（`--spec-draft-model`，别名 `--model-draft`）指定草稿模型，`--spec-draft-n-max` 控制单轮最多猜多少 token。**`--spec-type draft-simple` 必填**——其默认值是 `none`，只写 `-md` 会让 llama.cpp 加载草稿模型、占用显存，然后什么都不做，还不报错。
 
 关键在于：**验证是一次前向，而逐 token 解码需要 N 次前向。** 如果草稿命中 3 个，一次前向就产出了 4 个 token。实测在 Qwen 系列上可以获得 2～3 倍的端到端提速，而且**输出分布与大模型完全一致，不损失质量**——这是它相比各种剪枝、蒸馏手段最大的优势。
 
 草稿模型不需要很聪明，只需要**快**。2B 恰好满足。
+
+> **勘误与更新（2026-09）**：llama.cpp 已在 2026 年的改版中把投机解码参数统一迁到 `--spec-` 前缀下，旧写法会被直接拒绝，报 `unrecognized argument`。**这是从 2024–2025 年教程里抄命令后"突然不工作"的头号原因。** 新旧对照如下：
+
+| 旧参数（已移除） | 新参数（当前） | 含义 |
+|---|---|---|
+| `--draft-max` | `--spec-draft-n-max` | 单轮草稿最大 token 数（默认 3） |
+| `--draft-min` | `--spec-draft-n-min` | 低于该数量则整批丢弃、不验证（默认 0） |
+| `--draft-p-min` | `--spec-draft-p-min` | 草稿置信度低于该值即停止猜测（默认 0.00） |
+| —— | `--spec-type` | 投机策略，默认 `none`（普通双模型写 `draft-simple`） |
+| `-ngl`（仅目标模型） | `-ngld` / `--spec-draft-ngl` | 草稿模型独立卸载层数（新增） |
+
+此外，`-md` / `--spec-draft-model` / `--model-draft` 三个写法等价，均未变。投机解码的适用边界（接受率低于 60% 应关闭、显存吃紧时反而更慢、草稿长度与硬件相关）已在专门文章中详细展开：[《让 2B 当侦察兵：投机解码的原理、实测数据与失效边界》](/posts/2026-09-14-speculative-decoding-explained/)。
 
 ---
 
@@ -197,7 +210,7 @@ curl -X POST http://127.0.0.1:8080/lora-adapters \
   -d '[{"id": 0, "scale": 1.0}]'
 ```
 
-一个 2B base 模型可以同时服务"正式文风""口语化""结构化抽取"等多套 adapter，按请求热切换。训练成本极低，是个人开发者压榨小模型的实用技巧。
+一个 2B base 模型可以同时服务"正式文风""口语化""结构化抽取"等多套 adapter，按请求热切换。训练成本极低，是个人开发者压榨小模型的实用技巧。其底层机制、`-ngld` 之外的多适配器并发参数（`--max-cpu-loras`）以及生产环境的真实成本，见[《一份基座，N 套人格：LoRA 热插拔的原理、接口与真实成本》](/posts/2026-09-14-lora-hot-swap-explained/)。
 
 ### 多模态小模型：本地截图理解
 
