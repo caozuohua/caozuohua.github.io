@@ -1,7 +1,7 @@
 ---
 title: "不仅是定时：使用 systemd 构建企业级自动化运维体系"
-date: 2026-09-18
-publishDate: 2026-09-18
+date: 2026-09-14T11:30:00+08:00
+publishDate: 2026-09-14T11:30:00+08:00
 description: "深入解析 systemd 的运维价值，对比用户态 Daemon 的局限性，探讨如何利用 systemd.timer 与 Cgroups 进行任务调度与资源保障，并分析其局限性与避坑指南。"
 tags: ["Linux", "systemd", "自动化", "运维", "可靠性"]
 categories: ["Linux 原理系列"]

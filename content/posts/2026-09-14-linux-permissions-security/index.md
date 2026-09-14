@@ -1,7 +1,7 @@
 ---
 title: "不仅是读写：解密 Linux 文件权限与特权提升"
-date: 2026-09-15
-publishDate: 2026-09-15
+date: 2026-09-14T11:00:00+08:00
+publishDate: 2026-09-14T11:00:00+08:00
 description: "深入解析 Linux 文件权限体系，重点揭秘 SUID/SGID 特殊权限位的工作原理，并讨论如何在企业级 Agent 部署中规避提权风险。"
 tags: ["Linux", "权限管理", "SUID", "特权提升", "安全"]
 categories: ["Linux 原理系列"]

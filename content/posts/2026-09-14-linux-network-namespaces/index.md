@@ -1,7 +1,7 @@
 ---
 title: "沙箱的屏障：深入解析 Linux 网络命名空间与容器隔离"
-date: 2026-09-16
-publishDate: 2026-09-16
+date: 2026-09-14T11:10:00+08:00
+publishDate: 2026-09-14T11:10:00+08:00
 description: "从 Linux Network Namespace 的原理出发，探讨容器化网络的隔离机制，并针对企业级 Agent 在复杂网络环境中的隔离、多租户通信及流量调试给出实战方案。"
 tags: ["Linux", "网络命名空间", "容器", "网络调试", "Agent"]
 categories: ["Linux 原理系列"]

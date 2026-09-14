@@ -1,7 +1,7 @@
 ---
 title: "不仅是日志：构建企业级 Agent 的全链路可观测性"
-date: 2026-09-17
-publishDate: 2026-09-17
+date: 2026-09-14T11:20:00+08:00
+publishDate: 2026-09-14T11:20:00+08:00
 description: "深入剖析企业级 Agent 在感知、决策、执行三个阶段的可观测性设计。探讨如何利用 MCP 标准化接口与链路追踪，实现生产环境下的逻辑瓶颈洞察与故障秒级定位。"
 tags: ["Agent", "可观测性", "MCP", "Tracing", "链路追踪"]
 categories: ["Linux 原理系列"]
