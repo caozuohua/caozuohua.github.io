@@ -41,6 +41,7 @@ draft: false
 - [用表格管理个人基金组合的最小字段](/posts/2026-07-07-minimal-portfolio-spreadsheet-fields/)
 - [个人理财工具的权限边界：什么能自动化，什么必须人工确认](/posts/2026-07-07-personal-finance-tool-permission-boundary/)
 - [个人稳健理财工具维护手册](/posts/2026-07-07-personal-finance-tool-maintenance/)
+- [债券票息探至 1.68%：基金、债券行情速览与保守型配置](/posts/2026-09-17-fund-bond-market-conservative-allocation/)
 
 其中《100w 稳健型基金组合 · 执行手册》可以看作系列里的实战样例：给定资金规模、收益目标和回撤约束之后，如何拆成具体配置、执行日历和再平衡规则。
 
@@ -65,6 +66,7 @@ draft: false
 - [稳健组合里的每类资产到底负责什么](/posts/2026-07-07-asset-roles-in-stable-portfolio/)
 - [什么时候该持有现金，什么时候该承担波动](/posts/2026-07-07-cash-vs-risk-assets/)
 - [10w、50w、100w 三档资金的配置思路](/posts/2026-07-07-allocation-for-10w-50w-100w/)
+- [债券票息探至 1.68%：基金、债券行情速览与保守型配置](/posts/2026-09-17-fund-bond-market-conservative-allocation/)
 
 ### 3. 筛选篇：看懂基金，而不是追逐排行榜
 
