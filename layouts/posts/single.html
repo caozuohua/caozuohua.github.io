@@ -61,7 +61,8 @@
               <span>· {{ .WordCount }} 字</span>
             {{ end }}
             {{ with .Params.categories }}<span>· 系列：{{ delimit . " / " }}</span>{{ end }}
-            {{ with $aiAgent }}<span class="ai-byline" title="本文由 AI 智能体协作撰写">· AI 协作：{{ . }}</span>{{ end }}
+            {{/* 页头徽标同时给出智能体与模型型号：读者一眼即可判断这是哪一代模型的产出 */}}
+            {{ with $aiAgent }}<span class="ai-byline" title="本文由 AI 智能体协作撰写">· AI 协作：{{ . }}{{ with $aiModel }}（{{ . }}）{{ end }}</span>{{ end }}
           </div>
         </header>
 
