@@ -154,8 +154,25 @@ ai:
 
 ## 本地预览
 
-本机**默认不安装 Hugo**，构建完全交给 GitHub Actions，本地没有 Hugo 不影响发稿。
-需要用本地构建做发布前自检时，按 CI 锁定的版本下载 extended 版（路径 `.workbuddy/binaries/hugo/`，已 gitignore）：
+构建与部署完全交给 GitHub Actions，**本地没有 Hugo 也能正常发稿**。
+但改动 `layouts/` 下的模板、或做发布前自检时，本地构建能提前把问题暴露出来。
+
+本机已有一份 extended 版可用：
+
+```bash
+export HUGO="D:/Geek/.tools/hugo/hugo.exe"   # 已存在，v0.164.0 extended
+
+# 与 CI 同参数做一次全量构建 —— 会把 CI 会拦下的 WARNING 直接暴露出来
+"$HUGO" --minify --printPathWarnings --panicOnWarning
+
+# 顺带跑一遍产物断言门禁
+python .github/scripts/check-published-artifacts.py
+
+# 或起本地服务预览
+"$HUGO" server -D        # http://localhost:1313
+```
+
+需要与 CI 完全同版本时，按 `hugo-version` 下载 extended 版到 `.workbuddy/binaries/hugo/`（已 gitignore）：
 
 ```bash
 gh release download v0.166.0 --repo gohugoio/hugo \
@@ -163,17 +180,8 @@ gh release download v0.166.0 --repo gohugoio/hugo \
   --dir .workbuddy/binaries/hugo --clobber
 ```
 
-```bash
-# 与 CI 同参数做一次全量构建，可提前暴露 --panicOnWarning 会拦下的问题
-.workbuddy/binaries/hugo/hugo.exe --minify --printPathWarnings --panicOnWarning
-
-# 或起本地服务预览
-.workbuddy/binaries/hugo/hugo.exe server -D
-# 访问 http://localhost:1313
-```
-
-> 版本以 `.github/workflows/deploy-hugo.yml` 里的 `hugo-version` 为准。
-> 本地与 CI 版本不一致时，**本地过了不代表 CI 过**。
+> ⚠️ 版本以 `.github/workflows/deploy-hugo.yml` 的 `hugo-version`（当前 `0.166.0`）为准。
+> 本地与 CI 版本不一致时，**本地过了不代表 CI 过**——`--panicOnWarning` 对版本尤其敏感。
 
 ## 部署
 
