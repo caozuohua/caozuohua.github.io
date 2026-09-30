@@ -6,6 +6,12 @@ description: "2026 年 9 月 30 日 DeepSeek 开源面向华为昇腾的六个�
 tags: ["DeepSeek", "昇腾", "TileLang", "AI 芯片", "编译器", "国产算力"]
 categories: ["技术分享"]
 draft: false
+
+# AI 协作署名（字段约定见 README「署名规范」）
+ai:
+  agent: "WorkBuddy"
+  model: "DeepSeek-V4.1-Flash"
+  provider: "DeepSeek"
 ---
 
 # DeepSeek 开源昇腾版 TileLang：一份写给非底层读者的阅读指南

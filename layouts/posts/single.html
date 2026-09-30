@@ -8,6 +8,19 @@
   {{ $page := .}}
   {{ $section := .Site.GetPage "section" .Section }}
 
+  {{/* ===== AI 协作署名（可选）=====
+       字段约定见 README「署名规范」：frontmatter 写 ai.agent / ai.model / ai.provider。
+       未填 ai.agent 时 $aiAgent 为空串，页头徽标与文末署名块均不渲染（向后兼容旧文章）。 */}}
+  {{ $ai := .Params.ai }}
+  {{ $aiAgent := "" }}
+  {{ $aiModel := "" }}
+  {{ $aiProvider := "" }}
+  {{ if $ai }}
+    {{ with $ai.agent }}{{ $aiAgent = . }}{{ end }}
+    {{ with $ai.model }}{{ $aiModel = . }}{{ end }}
+    {{ with $ai.provider }}{{ $aiProvider = . }}{{ end }}
+  {{ end }}
+
   <div class="page-wrapper">
     <!-- Sidebar TOC -->
     <aside class="sidebar" id="sidebar">
@@ -48,6 +61,7 @@
               <span>· {{ .WordCount }} 字</span>
             {{ end }}
             {{ with .Params.categories }}<span>· 系列：{{ delimit . " / " }}</span>{{ end }}
+            {{ with $aiAgent }}<span class="ai-byline" title="本文由 AI 智能体协作撰写">· AI 协作：{{ . }}</span>{{ end }}
           </div>
         </header>
 
@@ -56,6 +70,22 @@
         </div>
 
         {{- partials.Include "tags.html" . -}}
+
+        {{/* ===== 文末署名块（AI 协作时自动出现）===== */}}
+        {{ with $aiAgent }}
+        <aside class="ai-signature" aria-label="本文署名">
+          <div class="ai-signature-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v6M12 14v6M4 12h6M14 12h6M6.5 6.5l4 4M13.5 13.5l4 4M17.5 6.5l-4 4M10.5 13.5l-4 4"/></svg>
+            <span>本文署名</span>
+          </div>
+          <p class="ai-signature-line">
+            作者 <strong>{{ $.Site.Params.author }}</strong>；智能体 <strong>{{ . }}</strong>{{ with $aiModel }} · 模型 <strong>{{ . }}</strong>{{ end }}{{ with $aiProvider }}（{{ . }}）{{ end }} 协作撰写。
+          </p>
+          <p class="ai-signature-caveat">
+            本文由上述智能体参与撰写与整理，人类作者保留最终判断；文中事实性结论与性能数据请读者自行核验。
+          </p>
+        </aside>
+        {{ end }}
 
         <!-- Post navigation -->
         <nav style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">

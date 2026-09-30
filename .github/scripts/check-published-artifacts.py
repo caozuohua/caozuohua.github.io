@@ -11,6 +11,7 @@ buildFuture=false：date / publishDate 晚于构建时刻的文章会被**静默
   - 对每篇内容，取其生效日期（优先 publishDate，否则 date）
   - 若生效日期 <= 当前时刻，则该文**应当**已发布 → 断言 public/posts/<slug>/index.html 存在
   - 若生效日期 > 当前时刻，则按设计被排除 → 记为 SKIP，不算失败
+  - 若 draft: true，则按设计不产出 HTML → 记为 SKIP，不算失败
   - 任一「应当发布却缺产物」→ 打印清单并 exit 1，构建即红灯
 
 用法（在 Hugo 构建之后执行）：
@@ -35,6 +36,21 @@ def read_front_matter(path):
         return None
     m = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n", text, re.S)
     return m.group(1) if m else None
+
+
+def is_draft(fm):
+    """front matter 中 draft 为真则返回 True。
+
+    必须识别草稿：`hugo new` 生成的骨架默认 `draft: true`，Hugo 不会为其产出 HTML。
+    若此处不跳过，任何人按 README 用 `hugo new` 建一篇草稿并推送，构建都会红灯——
+    而这是**误报**，不是真的丢了内容。
+    """
+    if fm is None:
+        return False
+    m = re.search(r"^draft:\s*(.+)$", fm, re.M)
+    if not m:
+        return False
+    return m.group(1).strip().strip("\"'").lower() in ("true", "yes", "1")
 
 
 def get_effective_date(fm, slug):
@@ -109,10 +125,13 @@ def main():
     now = datetime.datetime.now(datetime.timezone.utc)
     print("构建产物断言 @ %s" % now.isoformat())
 
-    published, skipped, missing, unparsable = [], [], [], []
+    published, skipped, drafts, missing, unparsable = [], [], [], [], []
 
     for slug, md_path in collect_articles():
         fm = read_front_matter(md_path)
+        if is_draft(fm):
+            drafts.append(slug)
+            continue
         dt, raw = get_effective_date(fm, slug)
         if dt is None:
             unparsable.append((slug, raw))
@@ -127,7 +146,10 @@ def main():
 
     for slug, raw in skipped:
         print("  SKIP (未到生效时间)  %-52s %s" % (slug, raw))
-    print("  应当发布: %d 篇 | 按设计跳过: %d 篇" % (len(published), len(skipped)))
+    for slug in drafts:
+        print("  SKIP (draft: true)   %s" % slug)
+    print("  应当发布: %d 篇 | 按设计跳过: %d 篇（未到生效时间）| 草稿: %d 篇"
+          % (len(published), len(skipped), len(drafts)))
 
     if unparsable:
         print("\n无法判定生效日期（需人工确认，按失败处理）:")

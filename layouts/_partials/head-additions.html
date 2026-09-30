@@ -818,3 +818,63 @@
     display: none;
   }
 </style>
+
+<style>
+  /* ========== AI 协作署名（页头徽标 + 文末署名块） ==========
+     字段约定见 README「署名规范」。未填 frontmatter 的 ai.agent 时，这两块都不渲染。 */
+  .ai-byline {
+    color: var(--color-accent);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .ai-signature {
+    margin: 2rem 0 0;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ai-signature-title {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .ai-signature-title svg {
+    flex: none;
+    color: var(--color-accent);
+  }
+
+  .ai-signature-line {
+    margin: 0;
+    padding: 0;
+    background: none;
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+
+  .ai-signature-line strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .ai-signature-caveat {
+    margin: 0.4rem 0 0;
+    padding: 0;
+    background: none;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+</style>
