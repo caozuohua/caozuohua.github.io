@@ -157,12 +157,17 @@ ai:
 构建与部署完全交给 GitHub Actions，**本地没有 Hugo 也能正常发稿**。
 但改动 `layouts/` 下的模板、或做发布前自检时，本地构建能提前把问题暴露出来。
 
-本机已有一份 extended 版可用：
+本机有两份 extended 版可用：
+
+| 路径 | 版本 | 用途 |
+|---|---|---|
+| `.workbuddy/binaries/hugo/hugo.exe` | **v0.166.0**（与 CI 一致） | **改模板 / 样式时优先用这份** |
+| `D:/Geek/.tools/hugo/hugo.exe` | v0.164.0 | 备用 |
 
 ```bash
-export HUGO="D:/Geek/.tools/hugo/hugo.exe"   # 已存在，v0.164.0 extended
+export HUGO=".workbuddy/binaries/hugo/hugo.exe"   # 与 CI 同版本
 
-# 与 CI 同参数做一次全量构建 —— 会把 CI 会拦下的 WARNING 直接暴露出来
+# 与 CI 完全同参数做一次全量构建 —— 会把 CI 会拦下的 WARNING 直接暴露出来
 "$HUGO" --minify --printPathWarnings --panicOnWarning
 
 # 顺带跑一遍产物断言门禁
@@ -172,16 +177,17 @@ python .github/scripts/check-published-artifacts.py
 "$HUGO" server -D        # http://localhost:1313
 ```
 
-需要与 CI 完全同版本时，按 `hugo-version` 下载 extended 版到 `.workbuddy/binaries/hugo/`（已 gitignore）：
+> ⚠️ 版本以 `.github/workflows/deploy-hugo.yml` 的 `hugo-version`（当前 `0.166.0`）为准。
+> **本地与 CI 版本不一致时，本地过了不代表 CI 过**——`--panicOnWarning` 对版本尤其敏感，
+> 所以优先用上面那份 0.166.0。
+
+若要重新获取（本机代理较慢，实测约 14 分钟）：
 
 ```bash
 gh release download v0.166.0 --repo gohugoio/hugo \
   --pattern "hugo_extended_0.166.0_windows-amd64.zip" \
   --dir .workbuddy/binaries/hugo --clobber
 ```
-
-> ⚠️ 版本以 `.github/workflows/deploy-hugo.yml` 的 `hugo-version`（当前 `0.166.0`）为准。
-> 本地与 CI 版本不一致时，**本地过了不代表 CI 过**——`--panicOnWarning` 对版本尤其敏感。
 
 ## 部署
 
