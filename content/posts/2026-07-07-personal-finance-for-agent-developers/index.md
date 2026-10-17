@@ -42,6 +42,7 @@ draft: false
 - [个人理财工具的权限边界：什么能自动化，什么必须人工确认](/posts/2026-07-07-personal-finance-tool-permission-boundary/)
 - [个人稳健理财工具维护手册](/posts/2026-07-07-personal-finance-tool-maintenance/)
 - [债券票息探至 1.68%：基金、债券行情速览与保守型配置](/posts/2026-09-17-fund-bond-market-conservative-allocation/)
+- [10 年期国债到 1.6485%：钱在掉头回货基，保守配置的赔率正在变薄](/posts/2026-10-17-fund-bond-market-monthly-october/)
 
 其中《100w 稳健型基金组合 · 执行手册》可以看作系列里的实战样例：给定资金规模、收益目标和回撤约束之后，如何拆成具体配置、执行日历和再平衡规则。
 
@@ -67,6 +68,7 @@ draft: false
 - [什么时候该持有现金，什么时候该承担波动](/posts/2026-07-07-cash-vs-risk-assets/)
 - [10w、50w、100w 三档资金的配置思路](/posts/2026-07-07-allocation-for-10w-50w-100w/)
 - [债券票息探至 1.68%：基金、债券行情速览与保守型配置](/posts/2026-09-17-fund-bond-market-conservative-allocation/)
+- [10 年期国债到 1.6485%：钱在掉头回货基，保守配置的赔率正在变薄](/posts/2026-10-17-fund-bond-market-monthly-october/)
 
 ### 3. 筛选篇：看懂基金，而不是追逐排行榜
 
