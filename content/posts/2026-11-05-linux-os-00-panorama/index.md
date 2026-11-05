@@ -206,9 +206,12 @@ Linux Foundation 的角色常被误解：它提供基础设施、峰会、TAB �
 | 01 | [Linux 到底是什么：内核、发行版与一次系统调用的旅程](/posts/2026-11-05-linux-os-01-kernel-syscall/) | 已发布 |
 | 02 | [进程与调度：从 fork 到 EEVDF](/posts/2026-11-05-linux-os-02-process-scheduler/) | 已发布 |
 | 基础 | [文件权限与特权提升](/posts/2026-09-14-linux-permissions-security/)、[信号机制与守护进程](/posts/2026-09-14-linux-signals/)、[网络命名空间与容器隔离](/posts/2026-09-14-linux-network-namespaces/)、[systemd 与自动化运维](/posts/2026-09-14-linux-systemd-ops/) | 已发布 |
-| 03–04 | 内存管理：虚拟内存、页表与 OOM；VFS 与文件系统选型 | 后续更新 |
-| 05–06 | 网络栈与 eBPF；cgroup v2 与容器资源边界 | 后续更新 |
-| 07–08 | 启动流程与内核开发流程；性能观测与调优实战 | 后续更新 |
+| 03 | [内存管理：虚拟内存、页表与 OOM](/posts/2026-11-05-linux-os-03-memory-management/) | 已发布 |
+| 04 | [VFS 与文件系统：一次写盘的完整路径](/posts/2026-11-05-linux-os-04-vfs-filesystems/) | 已发布 |
+| 05 | [网络栈与 eBPF：从 sk_buff 到可编程内核](/posts/2026-11-05-linux-os-05-network-ebpf/) | 已发布 |
+| 06 | [cgroup v2 与容器资源边界](/posts/2026-11-05-linux-os-06-cgroup-v2/) | 已发布 |
+| 07 | [启动流程与内核开发：从 UEFI 到第一个补丁](/posts/2026-11-05-linux-os-07-boot-and-kernel-dev/) | 已发布 |
+| 08 | [性能观测与调优：USE 方法与四层瓶颈判别](/posts/2026-11-05-linux-os-08-performance-observability/) | 已发布（完结） |
 
 ## 主要一手来源
 
