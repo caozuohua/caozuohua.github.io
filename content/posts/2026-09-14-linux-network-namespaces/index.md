@@ -60,3 +60,12 @@ nsenter -n -t <PID> ip addr
 
 ---
 *本文是 Linux 原理系列第五篇。下篇预告：我们将聚焦于运维的“定海神针”——《基于 systemd 的自动化任务保障》。*
+
+## 系列导航（2026-11 更新）
+
+「Linux 原理系列」已补充总览与机制篇，建议按下列顺序继续阅读：
+
+- [00 · Linux 操作系统全景：可核查的深度研究报告](/posts/2026-11-05-linux-os-00-panorama/)
+- [01 · Linux 到底是什么：内核、发行版与一次系统调用的旅程](/posts/2026-11-05-linux-os-01-kernel-syscall/)
+- [02 · 进程与调度：从 fork 到 EEVDF](/posts/2026-11-05-linux-os-02-process-scheduler/)
+- 基础篇：[文件权限与特权提升](/posts/2026-09-14-linux-permissions-security/) · [信号机制与守护进程](/posts/2026-09-14-linux-signals/) · [网络命名空间与容器隔离](/posts/2026-09-14-linux-network-namespaces/) · [systemd 与自动化运维](/posts/2026-09-14-linux-systemd-ops/)

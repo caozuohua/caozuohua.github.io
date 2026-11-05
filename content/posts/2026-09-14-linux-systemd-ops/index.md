@@ -67,3 +67,12 @@ WantedBy=timers.target
 
 ---
 *本文是 Linux 原理理解系列第七篇（完结）。从 Docker 隔离到 systemd 运维，我们完成了从“代码逻辑”到“系统工程”的进阶。希望这一系列文章能为您构建稳健的 Agent 系统提供底层的技术支撑。*
+
+## 系列导航（2026-11 更新，系列已续更）
+
+「Linux 原理系列」自 2026-11 起按机制逐层续更，建议从总览篇重新进入：
+
+- [00 · Linux 操作系统全景：可核查的深度研究报告](/posts/2026-11-05-linux-os-00-panorama/)
+- [01 · Linux 到底是什么：内核、发行版与一次系统调用的旅程](/posts/2026-11-05-linux-os-01-kernel-syscall/)
+- [02 · 进程与调度：从 fork 到 EEVDF](/posts/2026-11-05-linux-os-02-process-scheduler/)
+- 基础篇：[文件权限与特权提升](/posts/2026-09-14-linux-permissions-security/) · [信号机制与守护进程](/posts/2026-09-14-linux-signals/) · [网络命名空间与容器隔离](/posts/2026-09-14-linux-network-namespaces/) · [systemd 与自动化运维](/posts/2026-09-14-linux-systemd-ops/)
